@@ -12,17 +12,16 @@ jobs:
           MYSQL_ROOT_PASSWORD: root
     steps:
       - checkout 
-
       - run:
-        name: Install MySQL driver
-        command: |
-          sudo docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
-          sudo docker-php-ext-install zip bcmath pdo_mysql
+         name: Install MySQL driver
+         command: |
+           sudo docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
+           sudo docker-php-ext-install zip bcmath pdo_mysql
       - run:
-          name: Install Node
-          command: |
-            curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-            sudo apt-get install -y nodejs
+         name: Install Node
+         command: |
+           curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+           sudo apt-get install -y nodejs
       
       - restore_cache:
          key: composer-v1-{{ checksum "composer.lock" }}
