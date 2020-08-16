@@ -54,12 +54,12 @@ jobs:
 　test:
     steps:
       - run: 
-        name: アプリケーションテスト
-        command: vendor/bin/phpunit
+         name: アプリケーションテスト
+         command: vendor/bin/phpunit
 
 workflows:
   version: 2
-  workflow:
+  app-test:
     jobs:
       - build
       - test:
