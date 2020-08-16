@@ -65,6 +65,8 @@
             <!--  Modal Trigger-->
           </h2>
 
+          <span class="border border-bottom"></span>
+
           <!-- Modal -->
           <div class="modal fade right" id="sideModalTR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"aria-hidden="true">
 
