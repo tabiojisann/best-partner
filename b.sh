@@ -1,15 +1,15 @@
 #!/bin/sh
 
 
-echo "実行するシェルを選択してください"
+echo "実行するシェルを選択してください\nc : ciの構文エラーチェック\nd : コンテナに入る\ng : gitの変更をコミット、プッシュ"
 
 read name
 
 case "$name" in
-    "d") sh d.sh
+    "d") sh ./scripts/docker.sh
     ;;
-    "ci") sh ci.sh
+    "c") sh ./scripts/ci_validate.sh
     ;;
-    "git") sh git.sh
+    "g") sh ./scripts/git.sh
     ;;
 esac

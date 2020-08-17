@@ -1,6 +1,10 @@
 #!/bin/sh
 
+
+
 git add .
+
+echo "コミットメッセージを入力してください"
 
 read message
 
