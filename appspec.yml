@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+  destination: /home/ojisan/partner
+
+permissions:
+  - object: /home/ojisan/partner
+    owner: ojisan
+    group: ojisan
+
+hooks:
+  AfterInstall:
+    - location: ./scripts/after_install.sh
+    timeout: 60
+    tunas: ojisan
+
+
+    

@@ -88,5 +88,6 @@ class ArticleController extends Controller
         $user     = Auth::user();
         return view('articles.show', ['article' => $article, 'user' => $user]);
     }
-
 }
+
+
