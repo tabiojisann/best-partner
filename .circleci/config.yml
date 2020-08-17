@@ -85,7 +85,7 @@ jobs:
 
       - run:
          name: archive artifacts
-         command: zip -ryq best-partner.zip
+         command: zip -ryq best-partner best-partner.zip
       - aws-cli/install
       - run:
          name: upload S3
@@ -113,6 +113,8 @@ workflows:
               only:
                 - master
 
+
+                
 
     
 
