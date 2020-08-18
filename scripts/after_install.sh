@@ -2,6 +2,6 @@
 
 set -eux
 
-cd ~/laravel-ci
+cd ~/partner/best-partner
 php artisan migrate --force
 php artisan config:cache
