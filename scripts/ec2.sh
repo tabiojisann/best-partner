@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ssh ec2-user@54.250.37.161 
+ssh ec2-user@18.179.36.147

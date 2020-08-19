@@ -2,18 +2,19 @@ version: 0.0
 os: linux
 files:
   - source: /
-  destination: /home/ojisan/partner
+  destination: /var/www/html/best-partner
 
 permissions:
-  - object: /home/ojisan/partner
-    owner: ojisan
-    group: ojisan
+  - object: /var/www/html/best-partner
+    owner: ec2-user
+    group: ec2-user
+
 
 hooks:
   AfterInstall:
-    - location: ./scripts/after_install.sh
+    - location: ./scripts/success.sh
     timeout: 60
-    tunas: ojisan
+    tunas: ec2-user
 
 
     
