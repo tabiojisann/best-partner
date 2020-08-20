@@ -81,7 +81,7 @@ jobs:
           key: npm-v1-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-      ## - run: npm run prod
+      - run: npm run prod
 
       - run:
          name: archive artifacts
@@ -89,7 +89,7 @@ jobs:
       - aws-cli/install
       - run:
          name: upload S3
-         command: aws s3 cp best-partner.zip s3://${AWS_S3_BUCKET_NAME}
+         command: aws s3 cp best-partner.zip s3://${AWS_S3_BUCKET_NAME} 
       - run:
          name: デプロイ
          command: |

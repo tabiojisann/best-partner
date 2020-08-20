@@ -12,7 +12,7 @@ permissions:
 
 hooks:
   AfterInstall:
-    - location: ./scripts/success.sh
+    - location: ./scripts/after_install.sh
     timeout: 60
     tunas: ec2-user
 
