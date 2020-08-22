@@ -53,52 +53,21 @@ jobs:
       - run: 
          name: アプリケーションテスト
          command: vendor/bin/phpunit
-
   deploy:
     docker:
       - image: circleci/php:7.3-node-browsers
-    environment:
-      AWS_DEFAULT_REGION: ap-northeast-1
-
     steps:
-      - checkout
-      - restore_cache:
-          key: composer-no-dev-v1-{{ checksum "composer.lock" }}
-      - run: composer install -n --no-dev --prefer-dist
-      - save_cache:
-          key: composer-no-dev-v1-{{ checksum "composer.lock" }}
-          paths:
-            - vendor
-      - restore_cache:
-          key: npm-v1-{{ checksum "package-lock.json" }}
-      - run:
-          name: npm ci
-          command: |
-            if [ ! -d node_modules ]; then
-              npm ci
-            fi
-      - save_cache:
-          key: npm-v1-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
-      - run: npm run prod
-
-      - run:
-         name: archive artifacts
-         command: zip -ryq best-partner.zip .
-      - aws-cli/install
-      - run:
-         name: upload S3
-         command: aws s3 cp best-partner.zip s3://${AWS_S3_BUCKET_NAME} 
+      - add_ssh_keys
       - run:
          name: デプロイ
          command: |
-          aws deploy create-deployment \
-          --application-name best-partner \
-          --deployment-group-name best-partner \
-          --s3-location bucket=${AWS_S3_BUCKET_NAME},key=best-partner.zip,bundleType=zip
-orbs:
-  aws-cli: circleci/aws-cli@1.0.0
+          ssh -o StrictHostKeyChecking-no -t ojisan@${HOST_NAME} "cd best-partner && \
+          git pull origin master && \
+          composer install -n  --no-dev --prefer-dist && \ 
+          npm ci && \
+          npm run prod && \
+          php artisan migrate --force && \ 
+          php artisan config:cache"
 
 workflows:
   version: 2
@@ -106,12 +75,14 @@ workflows:
     jobs:
       - build
       - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master
+         requires:
+          - build
+         filters:
+          branches:
+            only: 
+              - master
+
+
 
 
                 
