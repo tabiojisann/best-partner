@@ -61,7 +61,7 @@ jobs:
       - run:
          name: デプロイ
          command: |
-          ssh -o StrictHostKeyChecking-no -t ojisan@${HOST_NAME} "cd best-partner && \
+          ssh -o StrictHostKeyChecking=no -t ojisan@${HOST_NAME} "cd best-partner && \
           git pull origin master && \
           composer install -n  --no-dev --prefer-dist && \ 
           npm ci && \
@@ -81,8 +81,6 @@ workflows:
           branches:
             only: 
               - master
-
-
 
 
                 
