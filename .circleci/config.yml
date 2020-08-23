@@ -51,23 +51,23 @@ jobs:
           - node_modeles    
       - run: npm run dev
       - run: 
-         name: アプリケーションテスト
-         command: vendor/bin/phpunit
+          name: アプリケーションテスト
+          command: vendor/bin/phpunit
   deploy:
     docker:
       - image: circleci/php:7.3-node-browsers
     steps:
       - add_ssh_keys
       - run:
-        name: デプロイ
-         command: |
-          ssh -o StrictHostKeyChecking=no -t ojisan@${HOST_NAME} "cd best-partner && \
-          git pull origin master && \
-          composer install -n  --no-dev --prefer-dist && \ 
-          npm ci && \
-          npm run prod && \
-          php artisan migrate --force && \ 
-          php artisan config:cache"
+          name: デプロイ
+          command: |
+            ssh -o StrictHostKeyChecking=no -t ojisan@${HOST_NAME} "cd best-partner && \
+            git pull origin master && \
+            composer install -n  --no-dev --prefer-dist && \ 
+            npm ci && \
+            npm run prod && \
+            php artisan migrate --force && \ 
+            php artisan config:cache"
 
 workflows:
   version: 2
