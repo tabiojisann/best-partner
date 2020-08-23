@@ -59,7 +59,7 @@ jobs:
     steps:
       - add_ssh_keys
       - run:
-         name: デプロイ
+        name: デプロイ
          command: |
           ssh -o StrictHostKeyChecking=no -t ojisan@${HOST_NAME} "cd best-partner && \
           git pull origin master && \
@@ -81,6 +81,10 @@ workflows:
           branches:
             only: 
               - master
+
+
+
+
 
 
                 
