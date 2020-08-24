@@ -10,8 +10,6 @@ case "$name" in
     ;;
     "d") sh ./scripts/docker.sh
     ;;
-    "e") sh ./scripts/ec2.sh
-    ;;
     "g") sh ./scripts/git.sh
     ;;
 esac

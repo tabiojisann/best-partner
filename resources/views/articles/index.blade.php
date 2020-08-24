@@ -16,7 +16,7 @@
   @endguest
 
   <!-- body -->
- @include('articles.tabs')
+ @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
   
   <div class="row  lime lighten-5">
 
