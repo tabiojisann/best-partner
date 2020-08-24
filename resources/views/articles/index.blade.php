@@ -17,6 +17,7 @@
 
   <!-- body -->
  @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
+ <p>{{ config('ec2.ip') }}</p>
   
   <div class="row  lime lighten-5">
 
