@@ -16,7 +16,9 @@
   @endguest
 
   <!-- body -->
- @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
+  @auth
+    @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
+  @endauth
   
   <div class="row  lime lighten-5">
 

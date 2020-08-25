@@ -22,7 +22,7 @@ Route::resource('/articles', 'ArticleController')->only(['show']);
 // });
 
 Route::resource('/users', 'UserController')->except(['create', 'store', 'destroy']);
-Route::get('users/search', 'UserController@serch')->name('users.search');
+Route::get('/search', 'UserController@search')->name('users.search');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

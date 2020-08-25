@@ -26,11 +26,7 @@
                   <p  class="mt-4">{!! nl2br(e($article->text))!!}</p>
                 </div>
                 <div class="view overlay col-5 offset-1  mt-3" >
-                  @if(isset($article->image))
-                    <img class="card-img-top" src="{{ $article->image }}"  alt="photo">
-                  @else
-                    <img src="{{ asset('logo/NoImage.jpg') }}" width="400" alt="">
-                  @endif
+                  <img class="card-img-top" src="{{ $article->image ?: asset('logo/NoImage.jpg') }}" width="400" alt="photo">
                 </div>
               </div>
             </div>

@@ -11,12 +11,8 @@
 
         <div class="col-5 offset-1 mt-5 pb-5">
           <div class="view overlay">
-            @if(isset($user->image))
-              <img class="card-img-top" src="{{ $user->image }}"  alt="photo">
-            @else
-              <img src="{{ asset('logo/NoImage.jpg') }}" width="400" alt="">
-            @endif
-              <div class="mask rgba-white-slight"></div>
+            <img class="card-img-top" src="{{ $user->image ?: asset('logo/NoImage.jpg') }}"  alt="photo">
+            <div class="mask rgba-white-slight"></div>
           </div>
         </div>
 
@@ -31,16 +27,15 @@
 
             <p class="ml-2">{{ $user->name }}</p>
           </div>
-
+      
           <table class="table">
         
             <thead>
-  
               <tr>
                 <th style="width:30%" >生年月日</th>
                 <th >{{ $user->birthday->format('Y年 n月 j日') }}</th>
               </tr>
-              
+        
               @if(!empty($user->sex))
               <tr>
                 <th style="width:30%" >性別</th>
