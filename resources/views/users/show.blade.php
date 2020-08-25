@@ -31,10 +31,13 @@
           <table class="table">
         
             <thead>
+              
+              @if(!empty($user->birthday))
               <tr>
                 <th style="width:30%" >生年月日</th>
-                <th >{{ $user->birthday->format('Y年 n月 j日') }}</th>
+                <th >{{  $user->birthday->format('Y年 n月 j日') }}</th>
               </tr>
+              @endif
         
               @if(!empty($user->sex))
               <tr>

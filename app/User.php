@@ -24,6 +24,7 @@ class User extends Authenticatable
         'sex',
         'birthplace',
         'birthday',
+        'age',
         'height',
         'weight',
         'skill',

@@ -24,12 +24,6 @@
                 <label for="name" class="font-weight-light">ユーザー名</label>
               </div>
 
-              <div class="md-form">
-                <strong>生年月日</strong>
-                <span class="text-danger">必須</span>
-                <input type="date" class="form-control" name="birthday" value="2000-01-01" required>
-              </div>
-
             
               <div class="md-form">
                 <i class="fa fa-envelope prefix grey-text"></i>

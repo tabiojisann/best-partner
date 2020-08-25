@@ -77,7 +77,6 @@
           
           <div class="md-form">
             <strong>生年月日</strong>
-            <span class="text-danger">必須</span>
             <input type="date" class="form-control" name="birthday" value="2000-01-01" required>
           </div>
 

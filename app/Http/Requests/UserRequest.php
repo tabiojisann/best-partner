@@ -35,6 +35,7 @@ class UserRequest extends FormRequest
             'image'      =>  'アイコン',
             'sex'        =>  '性別',
             'birthday'   =>  '生年月日',
+            'age'        =>  '年齢',
             'birthplace' =>  '出身地',
             'height'     =>  '身長',
             'weight'     =>  '体重',

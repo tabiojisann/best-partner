@@ -17,35 +17,46 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $keyword      = $request->input('keyword');
+        $keyword_back      = $request->input('keyword_back');
+        $keyword_birth      = $request->input('keyword_birth');
         $sex          = $request->input('sex');
-        $birthday     = $request->input('birthday');
+        $age          = $request->input('age');
         $height       = $request->input('height');
         $weight       = $request->input('weight');
         $background   = $request->input('background');
        
-        
+      
+
         $query = User::query();
         
-        if(!empty($keyword)) {
-            $query->where('name', 'LIKE', "%{$keyword}%");
+    
+        if(!empty($keyword_back)) {
+            $query->where('background', 'LIKE', "%{$keyword_back}%");
+        }
+        if(!empty($keyword_birth)) {
+            $query->where('birthplace', 'LIKE', "%{$keyword_birth}%");
         }
 
-        if($sex === '男性') {
+        if(!empty($age)) {
+            $query->where('age', $age)->get();
+        }
+
+        if($sex === '1') {
             $query->where('sex', '男性')->get();
         } 
-        if($sex === '女性') {
+        if($sex === '2') {
             $query->where('sex', '女性')->get();
         } 
 
         $users = $query->get();
 
-
         return view('users.search', [
             'users'   => $users,
             'user'    => $user,
-            'keyword' => $keyword,
+            'keyword_back' => $keyword_back,
+            'keyword_birth' => $keyword_birth,
             'sex'     => $sex,
+            'age'     => $age
         ]);
     }
 
@@ -66,18 +77,26 @@ class UserController extends Controller
 
      public function update(UserRequest $request, User $user)
      {
+
+        
+
         $user->fill($request->all());  
 
         $image = $request->file('image');
-
+     
         if(isset($image)){
             $fileName = ($image)->getClientOriginalName();
             $path = Storage::disk('s3')->putFileAs('users', $image, $fileName, 'public');
             $user->image = Storage::disk('s3')->url($path);
         }
 
-         $user->save();
+        $date = Carbon::parse($user->birthday);
+        $age  = $date->age;
 
-         return view('users.show', ['user' => $user]);
+        $user->age = $age;
+
+        $user->save();
+
+         return view('users.show', ['user' => $user, 'age' => $age]);
      }
 }
