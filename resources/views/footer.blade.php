@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="page-footer font-small mdb-color lighten-3 pt-4">
-<a class="navbar-brand offset-5" href="/">
-      <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="300" border="0" class="horizontal">
+    <a class="navbar-brand offset-5 " href="/">
+      <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="300" border="0" class="horizontal ">
     </a>
   <!-- Footer Links -->
   <div class="container text-center text-md-left">

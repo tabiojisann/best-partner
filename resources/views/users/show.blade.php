@@ -8,7 +8,6 @@
    
       <div class="row">
 
-
         <div class="col-5 offset-1 mt-5 pb-5">
           <div class="view overlay">
             <img class="card-img-top" src="{{ $user->image ?: asset('logo/NoImage.jpg') }}"  alt="photo">
@@ -25,9 +24,9 @@
               <a href="{{ route('users.edit', ['user' => $user]) }}" class="h3 ml-3"><i class="fas fa-edit text-primary"></i></a>
             @endif
 
+
             <button type="button" class="btn btn-outline-primary btn-rounded waves-effect">Primary</button>
 
-            <p class="ml-2">{{ $user->name }}</p>
           </div>
       
           <table class="table">

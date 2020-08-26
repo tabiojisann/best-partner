@@ -8,7 +8,7 @@
   @include('articles.tabs', ['hasArticles' => false, 'hasUsers' => true])
 
 
-  <div class="row lime lighten-5">
+  <div class="row cloudy-knoxville-gradient">
     <div class="container col-7">
       
       <div class="border border-info p-5 m-5">

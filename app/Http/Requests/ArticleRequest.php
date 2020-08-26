@@ -37,8 +37,8 @@ class ArticleRequest extends FormRequest
             'title' => 'タイトル',
             'text'  => '本文',
             'image' => '画像',
-            'position' => 'ポジション',
-            'style' => 'スタイル',
+            'position' => '募集ポジション',
+            'style' => '募集スタイル',
         ];
     }
 }
