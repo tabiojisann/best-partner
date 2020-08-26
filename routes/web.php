@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 Route::get('/', 'ArticleController@index')->name('articles.index');
+Route::get('/search/article', 'ArticleController@search')->name('articles.search');
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/articles', 'ArticleController')->only(['show']);
+
 
 // Route::prefix('users')->name('users.')->group(function() {
 //   Route::get()->name('/{name}', 'UserController@show')->name('show');

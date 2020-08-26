@@ -24,7 +24,51 @@ class ArticleController extends Controller
         return view('articles.index', ['articles' => $articles, 'user' => $user]);
     }
 
-    public function create(User $user) 
+    public function search(Request $request)
+    {
+        $user     = Auth::user();
+
+        $keyword     = $request->input('keyword');
+        $style       = $request->input('style');
+        $position    = $request->input('position');
+
+        $query = Article::query();
+
+        if(!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%");
+        }
+
+        if($style === '1') {
+            $query->where('style', '漫才');
+        } 
+        if($style === '2') {
+            $query->where('style', 'コント');
+        } 
+        if($style === '3') {
+            $query->where('style', 'その他');
+        } 
+        if($position === '1') {
+            $query->where('position', 'ボケ');
+        } 
+        if($position === '2') {
+            $query->where('position', 'ツッコミ');
+        } 
+        if($position === '3') {
+            $query->where('position', 'その他');
+        } 
+
+        $articles = $query->get();
+
+        return view('articles.search', [
+            'articles' => $articles, 
+            'user' => $user,
+            'keyword' => $keyword,
+            'style'  => $style,
+            'position' => $position,
+        ]);
+    }
+
+    public function create() 
     {
         $user = Auth::user();
         return view('articles.create', ['user' => $user]);
@@ -50,9 +94,8 @@ class ArticleController extends Controller
         return redirect()->route('articles.index');
     }
 
-    public function edit(Article $article, User $user)
+    public function edit(Article $article)
     {  
-        
         $user = Auth::user();
 
         return view('articles.edit', ['article' => $article, 'user' => $user]);

@@ -20,31 +20,10 @@
     @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
   @endauth
   
-  <div class="row  lime lighten-5">
+  <div class="row lime lighten-5">
 
     <div class="card border-light col-3 offset-1 my-5" style="max-height: 440px;">
-      <p class="card-header">検索</p>
-        <div class="card-body">
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="groupOfDefaultRadios">
-            <label class="custom-control-label" for="defaultGroupExample1">Option 1</label>
-          </div>
-
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfDefaultRadios" checked>
-            <label class="custom-control-label" for="defaultGroupExample2">Option 2</label>
-          </div>
-  
-          <div class="custom-control custom-radio">
-            <input type="radio" class="custom-control-input" id="defaultGroupExample3" name="groupOfDefaultRadios">
-            <label class="custom-control-label" for="defaultGroupExample3">Option 3</label>
-          </div>
-
-          <form class="form-inline mr-auto mt-5">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn blue-gradient btn-rounded btn-sm my-0" type="submit">Search</button>
-          </form>
-        </div>
+      @include('articles.searchForm')
     </div>
 
     <!-- 記事一覧 -->
@@ -54,11 +33,7 @@
         @include('articles.card')
       @endforeach
     </div>
-  </div>
-
-  
-
-  
+  </div>  
 
   @include('footer')
 

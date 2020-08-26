@@ -17,13 +17,14 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        $keyword_back      = $request->input('keyword_back');
-        $keyword_birth      = $request->input('keyword_birth');
-        $sex          = $request->input('sex');
-        $age          = $request->input('age');
-        $height       = $request->input('height');
-        $weight       = $request->input('weight');
-        $background   = $request->input('background');
+        $keyword_back   = $request->input('keyword_back');
+        $keyword_birth  = $request->input('keyword_birth');
+        $sex            = $request->input('sex');
+        $age_upper      = $request->input('age_upper');
+        $age_lower      = $request->input('age_lower');
+        $height         = $request->input('height');
+        $weight         = $request->input('weight');
+        $background     = $request->input('background');
        
       
 
@@ -37,26 +38,30 @@ class UserController extends Controller
             $query->where('birthplace', 'LIKE', "%{$keyword_birth}%");
         }
 
-        if(!empty($age)) {
-            $query->where('age', $age)->get();
+        if(!empty($age_lower)) {
+            $query->where('age', '>=', $age_lower)->get();
+        }
+        if(!empty($age_upper)) {
+            $query->where('age', '<=', $age_upper)->get();
         }
 
         if($sex === '1') {
-            $query->where('sex', '男性')->get();
+            $query->where('sex', '男性');
         } 
         if($sex === '2') {
-            $query->where('sex', '女性')->get();
+            $query->where('sex', '女性');
         } 
 
         $users = $query->get();
 
         return view('users.search', [
-            'users'   => $users,
-            'user'    => $user,
-            'keyword_back' => $keyword_back,
+            'users'         => $users,
+            'user'          => $user,
+            'keyword_back'  => $keyword_back,
             'keyword_birth' => $keyword_birth,
-            'sex'     => $sex,
-            'age'     => $age
+            'sex'           => $sex,
+            'age_lower'     => $age_lower,
+            'age_upper'     => $age_upper,
         ]);
     }
 
@@ -77,8 +82,6 @@ class UserController extends Controller
 
      public function update(UserRequest $request, User $user)
      {
-
-        
 
         $user->fill($request->all());  
 
