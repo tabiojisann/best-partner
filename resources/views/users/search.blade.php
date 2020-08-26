@@ -7,9 +7,10 @@
 
   @include('articles.tabs', ['hasArticles' => false, 'hasUsers' => true])
 
+
   <div class="row lime lighten-5">
-    <div class="container text-center mt-5 mb-5">
-      <h1>検索条件を絞り込み</h1>
+    <div class="container col-7">
+      
       <div class="border border-info p-5 m-5">
         <form action="{{ route('users.search') }}" method="GET">
 
@@ -19,7 +20,7 @@
               <option value="2">女性</option>
             </select>
 
-            <div class="input-group md-form d-flexjustify-content-around">
+            <div class="input-group md-form w-75 ">
               <div class="input-group-prepend ">
                 <span class="input-group-text amber lighten-2" id="basic-text1">
                   <i class="fas fa-search text-white" aria-hidden="true"></i>
@@ -38,29 +39,35 @@
             </div>
             
          
-              <div class="md-form  mt-0">
-                <input type="number" name='age' id="age" class="form-control w-25 d-inline">
-                <label for="age">年齢</label>
-                <b>以上</b>
-              </div>
+            <div class="md-form d-flex justify-content-start mt-0">
+              <label for="age">年齢</label>
 
+              <input type="number" name='age' id="age" class="form-control w-25 ">
+              <b class="mt-5 mx-4">以上</b>
 
-          
+              <input type="number" name='age' id="age" class="form-control w-25 ">
+              <b class="mt-5 ml-4">以下</b>
+            </div>
 
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-default w-25">検索</button>
+            </div>
 
-            <button type="submit" class="btn btn-default col-md-5">検索</button>
         </form>
       </div>
+    </div>
+    
+    <div class="container col-5 mt-5 text-center animated fadeIn">
+      @foreach($users as $user)
+      <a href="{{ route('users.show', ['user' => $user]) }}" class="d-block animated fadeIn slow">
+        <img src="{{ $user->image ?: asset('logo/user.jpg') }}"  class="d-inline rounded-circle" height="50" width="45"  alt="">
+        <p>{{ $user->name }}</p>
+      </a>
+      @endforeach
+    </div>
 
-    <p>{{ $user->name }}</p>
-    <p>{{ $user->name }}</p>
-    <p>{{ $user->name }}</p>
-    <p>{{ $user->name }}</p>
-    <p>{{ $user->name }}</p>
-    <p>{{ $user->name }}</p>
-    <p>{{ $user->name }}</p>
-    <p>{{ $user->name }}</p>
-    <p>{{ $user->name }}</p>
+   
+
 
 <!-- 
     @if(!empty($keyword_birth))
@@ -84,7 +91,7 @@
     @endif  -->
 
 
-    </div>
+  
   </div>
 
   @include('footer')
