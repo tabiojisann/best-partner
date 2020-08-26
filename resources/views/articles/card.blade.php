@@ -2,12 +2,14 @@
 
   <div class="m-1 d-flex justify-content-between ">
     <div class="d-inline">
-      <img src="{{ $article->user->image ?: asset('logo/user.jpg') }}"  height="50" width="45" class="rounded-circle"  alt="">
-      @if(Auth::id() === $article->user_id)
-        <p class="text-danger d-inline">{{ $article->user->name }}</p>
-      @else
-        <p class="text-info d-inline">{{ $article->user->name }}</p>
-      @endif  
+
+        <img src="{{ $article->user->image ?: asset('logo/user.jpg') }}"  height="50" width="45" class="rounded-circle"  alt="">
+        @if(Auth::id() === $article->user_id)
+          <p class="text-danger d-inline">{{ $article->user->name }}</p>
+        @else
+          <p class="text-info d-inline">{{ $article->user->name }}</p>
+        @endif 
+
     </div>
 
     @if(Auth::id() === $article->user_id)

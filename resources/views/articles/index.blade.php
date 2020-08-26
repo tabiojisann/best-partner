@@ -23,11 +23,7 @@
   <div class="row heavy-rain-gradient">
 
     <div class="card border-light col-3 offset-1 my-5 search">
-
-  
       @include('articles.searchForm')
-
-
     </div>
 
     <!-- 記事一覧 -->
@@ -38,8 +34,6 @@
       @endforeach
     </div>
   </div>  
-
-
 
   @include('footer')
 

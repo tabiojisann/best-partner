@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 Route::get('/', 'ArticleController@index')->name('articles.index');
-Route::get('/search/article', 'ArticleController@search')->name('articles.search');
+Route::get('/search/article', 'ArticleController@search')->name('articles.search')->middleware('auth');
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/articles', 'ArticleController')->only(['show']);
 
@@ -23,7 +23,7 @@ Route::resource('/articles', 'ArticleController')->only(['show']);
 //   Route::get()->name('/{name}', 'UserController@show')->name('show');
 // });
 
-Route::resource('/users', 'UserController')->except(['create', 'store', 'destroy']);
+Route::resource('/users', 'UserController')->except(['create', 'store', 'destroy'])->middleware('auth');
 Route::get('/search', 'UserController@search')->name('users.search');
 
 Route::get('/home', 'HomeController@index')->name('home');
