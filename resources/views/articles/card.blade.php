@@ -66,7 +66,7 @@
     </a>
   </div>
 
-  <div class="card-body">             
+  <div class="card-body ">             
 
     <h3 class="card-title">{{ $article->title }}</h3>
 

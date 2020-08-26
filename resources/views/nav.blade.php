@@ -1,5 +1,5 @@
 
-  <nav class="navbar navbar-dark cloudy-knoxville-gradient overlay sticky-top">
+  <nav class="navbar navbar-dark cloudy-knoxville-gradient overlay">
 
   
     <div class="row">

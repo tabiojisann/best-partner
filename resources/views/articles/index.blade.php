@@ -20,10 +20,14 @@
     @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
   @endauth
   
-  <div class="row lime lighten-5">
+  <div class="row heavy-rain-gradient">
 
-    <div class="card border-light col-3 offset-1 my-5" style="max-height: 440px;">
+    <div class="card border-light col-3 offset-1 my-5 search">
+
+  
       @include('articles.searchForm')
+
+
     </div>
 
     <!-- 記事一覧 -->
@@ -35,9 +39,14 @@
     </div>
   </div>  
 
+
+
   @include('footer')
 
+
 @endsection
+
+
 
 
 
