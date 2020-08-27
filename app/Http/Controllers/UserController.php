@@ -13,6 +13,11 @@ use App\Http\Requests\UserRequest;
 class UserController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function search(Request $request, User $user)
     {
         $user = Auth::user();
@@ -67,7 +72,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        
+
         return view('users.show', [
             'user' => $user,
         ]);
@@ -102,4 +107,29 @@ class UserController extends Controller
 
          return view('users.show', ['user' => $user, 'age' => $age]);
      }
+
+     
+
+     public function follow(Request $request, User $user)
+     {
+        
+        $user->followers()->detach($request->user()->id);
+        $user->followers()->attach($request->user()->id);
+
+        return[
+            'id' => $user->id,
+        ];
+   
+     }
+
+     public function unfollow(Request $request, User $user)
+     {
+        
+        $user->followers()->detach($request->user()->id);
+        
+        return[
+            'id' => $user->id,
+        ];
+     }
+
 }

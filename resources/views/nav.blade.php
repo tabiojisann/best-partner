@@ -25,13 +25,6 @@
     @endguest
 
     @auth
-      <a href="{{ route('users.show', ['user' => $user]) }}" class="text-danger">
-        <img src="{{ $user->image ?: asset('logo/NoImage.jpg') }}" class="d-inline rounded-circle" height="50" width="45" alt="">
-        <h3 class="d-inline ml-3">{{ $user->name }}</h3>
-      </a>
-    @endauth
-
-    @auth
       <div class="row">
         <a href="{{ route('articles.create') }}">
           <button type="button" class="btn btn-outline-default waves-effect">

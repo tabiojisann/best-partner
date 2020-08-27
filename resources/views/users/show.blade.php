@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'マイページ')
+@section('title', $user->name)
 
 @section('content')
   @include('nav')
@@ -17,17 +17,27 @@
 
         <div class="col-4 offset-1 mt-5">
 
-          <div class="name pb-5">
-            <h1 class="d-inline">{{ $user->name }}</h1>
+          <div class="name pb-5 d-flex justify-content-between">
+            <h1 class="">{{ $user->name }}</h1>
 
             @if( Auth::id() === $user->id )
-              <a href="{{ route('users.edit', ['user' => $user]) }}" class="h3 ml-3"><i class="fas fa-edit text-primary"></i></a>
+              <a href="{{ route('users.edit', ['user' => $user]) }}" class="h3 ml-3"><i class="fas fa-user-edit text-primary"></i></i></a>
             @endif
 
-
-            <button type="button" class="btn btn-outline-primary btn-rounded waves-effect">Primary</button>
-
+            @if( Auth::id() !== $user->id )
+              <follow-button
+               class="ml-auto"
+               :initial-is-followed-by='@json($user->isFollowedBy(Auth::user()))'
+               :authorized='@json(Auth::check())'
+               endpoint="{{ route('users.follow', ['user' => $user]) }}"
+               >
+               </follow-button>
+            @endif
           </div>
+
+         
+
+ 
       
           <table class="table">
         
