@@ -14,17 +14,29 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 Route::get('/', 'ArticleController@index')->name('articles.index');
-Route::get('/search/article', 'ArticleController@search')->name('articles.search')->middleware('auth');
+
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/articles', 'ArticleController')->only(['show']);
 
 
-// Route::prefix('users')->name('users.')->group(function() {
-//   Route::get()->name('/{name}', 'UserController@show')->name('show');
-// });
 
-Route::resource('/users', 'UserController')->except(['create', 'store', 'destroy'])->middleware('auth');
-Route::get('/search', 'UserController@search')->name('users.search');
+Route::resource('/users', 'UserController')->only(['update', 'show', 'edit']);
+
+
+Route::prefix('search')->group(function() {
+  Route::get('/users', 'UserController@search')->name('users.search');
+  Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
+});
+
+
+Route::prefix('users')->name('users.')->group(function() {
+  Route::middleware('auth')->group(function() {
+    Route::put('/{user}/follow', 'UserController@follow')->name('follow');
+    Route::delete('/{user}/follow', 'UserController@unfollow')->name('unfollow');
+  });
+});
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

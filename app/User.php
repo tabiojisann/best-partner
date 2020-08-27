@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
@@ -66,5 +67,23 @@ class User extends Authenticatable
         return $this->hasMany('App\Article');
     }
 
+    public function followers(): BelongsToMany
+    {
+        return  $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
+    }
+
+    public function isFollowedBy(?User $user): bool
+    {
+        return $user
+            ? (bool)$this->followers->where('id', $user->id)->count()
+            : false;
+    }
+
 }
+
+
+
+
+
+
 

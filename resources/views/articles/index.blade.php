@@ -16,6 +16,15 @@
   @endguest
 
   <!-- body -->
+
+
+  @auth
+    <a href="{{ route('users.show', ['user' => $user]) }}" class="text-danger">
+      <img src="{{ $user->image ?: asset('logo/NoImage.jpg') }}" class="d-inline rounded-circle" height="50" width="45" alt="">
+      <h3 class="d-inline ml-3">{{ $user->name }}</h3>
+    </a>
+  @endauth
+
   @auth
     @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
   @endauth

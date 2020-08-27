@@ -5,9 +5,6 @@
  */
 
 
-
-
-
 window.Vue = require('vue');
 
 /**
@@ -32,11 +29,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 import './bootstrap'
 import './main'
 import Vue from 'vue'
-import fileUpload from './components/fileUpload'
+import FollowButton from './components/FollowButton'
 
 const app = new Vue({
     el: '#app',
     components: {
-        fileUpload,
+        FollowButton
     }
 });
