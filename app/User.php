@@ -67,7 +67,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Article');
     }
 
-    public function followers(): BelongsToMany
+    public function follows(): BelongsToMany
     {
         return  $this->belongsToMany('App\User', 'follows', 'followee_id', 'follower_id')->withTimestamps();
     }
@@ -75,7 +75,7 @@ class User extends Authenticatable
     public function isFollowedBy(?User $user): bool
     {
         return $user
-            ? (bool)$this->followers->where('id', $user->id)->count()
+            ? (bool)$this->follows->where('id', $user->id)->count()
             : false;
     }
 

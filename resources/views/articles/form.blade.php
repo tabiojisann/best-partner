@@ -1,4 +1,8 @@
 @csrf
+
+<image-upload class="mt-5 pb-5">
+</image-upload>
+
 <div class="form-group mt-5 pb-5">
   <strong>募集ポジション</strong>
   <strong class="text-danger">必須</strong>
@@ -133,17 +137,6 @@
 
 </div>
 
-<template>
-  <div class="input-group mt-5 pb-5">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="image">イメージ画像</span>
-    </div>
-    <div class="custom-file">
-      <input type="file" class="custom-file-input" name="image" id="image" aria-describedby="image-area">
-      <label class="custom-file-label" for="image">任意で選択してください</label>
-    </div>
-  </div>
-</template>
 
 <div class="form-group shadow-textarea mt-5 pb-5">
   <strong>タイトル</strong>

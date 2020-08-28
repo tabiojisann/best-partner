@@ -9,7 +9,7 @@
     @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
   @endauth
   
-  <div class="row lime lighten-5">
+  <div class="row heavy-rain-gradient">
 
     <div class="card border-light col-3 offset-1 my-5 search">
       @include('articles.searchForm') 
@@ -17,7 +17,7 @@
 
     <!-- 検索結果 -->
  
-      <div class="col-6 offset-1 pb-5 animated fadeIn slow">
+      <div class="col-6 offset-1 pb-5">
         @if(!empty($keyword || $style || $position))
           @if($articles->count())
             @foreach($articles as $article)
