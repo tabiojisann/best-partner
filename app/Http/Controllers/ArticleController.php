@@ -19,8 +19,10 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::all()->sortByDesc('created_at');
         $user     = Auth::user();
+        $articles = Article::all()->sortByDesc('created_at')
+                    ->load('user');
+        
         return view('articles.index', ['articles' => $articles, 'user' => $user]);
     }
 
@@ -57,7 +59,8 @@ class ArticleController extends Controller
             $query->where('position', 'その他');
         } 
 
-        $articles = $query->get();
+        $articles = $query->get()
+                    ->load('user');
 
         return view('articles.search', [
             'articles' => $articles, 

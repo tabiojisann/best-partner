@@ -113,8 +113,8 @@ class UserController extends Controller
      public function follow(Request $request, User $user)
      {
         
-        $user->followers()->detach($request->user()->id);
-        $user->followers()->attach($request->user()->id);
+        $user->follows()->detach($request->user()->id);
+        $user->follows()->attach($request->user()->id);
 
         return[
             'id' => $user->id,
@@ -125,11 +125,10 @@ class UserController extends Controller
      public function unfollow(Request $request, User $user)
      {
         
-        $user->followers()->detach($request->user()->id);
+        $user->follows()->detach($request->user()->id);
         
         return[
             'id' => $user->id,
         ];
      }
-
 }

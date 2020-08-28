@@ -35,7 +35,7 @@
     <span class="border"></span>
 
     <div class="d-flex justify-content-center p-2">
-      <button type="submit" class="btn winter-neva-gradient">検索</button>
+      <button type="submit" class="btn winter-neva-gradient pink-text">検索</button>
     </div>
   </div>
 </form>

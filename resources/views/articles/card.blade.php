@@ -1,4 +1,4 @@
-<div class="card mt-5 animated fadeIn slow">
+<div class="card mt-5 article_card">
 
   <div class="m-1 d-flex justify-content-between ">
     <div class="d-inline">
