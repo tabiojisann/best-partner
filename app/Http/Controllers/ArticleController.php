@@ -94,7 +94,12 @@ class ArticleController extends Controller
 
         $article->save();  
 
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.confirm', ['article' => $article]);
+    }
+
+    public function confirm(Article $article)
+    {
+        return view('articles.confirm');
     }
 
     public function edit(Article $article)

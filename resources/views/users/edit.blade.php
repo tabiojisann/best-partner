@@ -4,12 +4,15 @@
 
 @section('content')
   @include('nav')
-    <div class="container cloudy-knoxville-gradient" style="max-width: 100%;">
-      @include('errors')
-        <form method="POST" action="{{ route('users.update', ['user' => $user]) }}" enctype="multipart/form-data">
-          @method('PATCH')
-          @csrf
+  <form method="POST" action="{{ route('users.update', ['user' => $user]) }}" enctype="multipart/form-data">
+    @method('PATCH')
+    @csrf
+      <div class="container cloudy-knoxville-gradient" style="max-width: 100%;">
 
+          <div class="text-center pt-5">
+            @include('errors')
+          </div>
+          
           <div class="row">
 
             <div class="col-4 offset-1 mt-5 pb-5">
@@ -145,30 +148,32 @@
                 <input type="url" name="blog" class="form-control" value="{{ $user->blog }}">
               </div>
 
-             
+              <input type="submit" class="btn btn-indigo mt-5 px-5" value="更新">
                         
-            </div>
-
-            <div class="container mb-5 " style="max-width: 100%;">
-              <div class="row border-top">
-                <div class="">
-                  <div class="col-6 mt-5">
-                    <div class="md-form">
-                      <textarea name="PR" id="PR" cols="70" rows="30">{{ $user->PR }}</textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <input type="submit" class="btn btn-indigo" value="更新">
-
+            </div> 
           </div>
         </div>
+      </div>
 
-        </form>
-    </div>
+      <div class="container mb-5 " style="max-width: 100%;">
+        <div class="row border-top">
+          <div class="">
+            <div class="col-6 mt-5">
+              <div class="md-form">
+                <textarea name="PR" id="PR" cols="70" rows="30">{{ $user->PR }}</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="d-flex justify-content-center">
+        <input type="submit" class="btn btn-info px-5 mb-5" value="更新">
+      </div>
+
+      
+
+  </form>
   @include('footer')
 @endsection
 

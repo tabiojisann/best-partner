@@ -48,6 +48,10 @@
    font-size: 100px;
  }
 
+ li {
+   list-style: none;
+ }
+
  /* .file-upload-wrapper {
    border-style: dashed;
    border-width: 1px;
