@@ -19,11 +19,16 @@ Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->mi
 Route::resource('/articles', 'ArticleController')->only(['show']);
 
 Route::prefix('articles')->name('articles.')->group(function() {
-  Route::get('{article}/confirm', 'ArticleController@confirm')->name('confirm')->middleware('auth');
+ 
 });
 
-Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
+Route::get('/confirm', 'ArticleController@confirm')->name('articles.confirm')->middleware('auth');
+Route::post('/confirm', 'ArticleController@send')->name('articles.send')->middleware('auth');
 
+Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
+Route::get('/users', 'UserController@search')->name('users.search')->middleware('auth');
+
+Route::resource('/users', 'UserController')->only(['show', 'edit', 'update']);
 
 
 

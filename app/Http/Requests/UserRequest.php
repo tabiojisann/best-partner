@@ -25,8 +25,8 @@ class UserRequest extends FormRequest
     {
         return [
             'name'   => 'required|max:8',
-            'height' => ['integer', 'between:1,300'],
-            'weight' => ['integer', 'between:1,200'],
+            'height' => ['max:300'],
+            'weight' => ['max:200'],
         ];
     }
 

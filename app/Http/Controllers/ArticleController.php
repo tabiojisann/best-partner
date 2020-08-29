@@ -92,15 +92,41 @@ class ArticleController extends Controller
      
         $article->user_id = $request->user()->id; 
 
-        $article->save();  
+        $request->session()->put('articles.create', $article);
 
-        return redirect()->route('articles.confirm', ['article' => $article]);
+        return redirect()->action('ArticleController@confirm');
+        // return redirect()->route('articles.confirm', ['article' => $article]);
+        // return view('articles.confirm', ['article' => $article]);
     }
 
-    public function confirm(Article $article)
+    public function confirm(Request $request, Article $article)
     {
-        return view('articles.confirm');
+        $article = $request->session()->get("articles.create");
+		
+		//セッションに値が無い時はフォームに戻る
+		if(!$article){
+			return redirect()->action("ArticleController@create");
+		}
+		return view("articles.confirm",['article' => $article]);
     }
+
+    public function send(Request $request, Article $article)
+    {
+       
+        $article = $request->session()->get("articles.create");
+
+        if(!$article){
+            return redirect()->action("ArticleController@create");
+        }
+        
+        $article->save();
+
+        $request->session()->forget("article.create");
+
+        return redirect()->route('articles.index', ['article' => $article]);
+    }
+
+
 
     public function edit(Article $article)
     {  
@@ -122,8 +148,10 @@ class ArticleController extends Controller
             $article->image = Storage::disk('s3')->url($path);
         }
      
-        $article->save();
-        return redirect()->route('articles.index');
+        $request->session()->put('articles.create', $article);
+
+        return redirect()->action('ArticleController@confirm');
+
     }
 
     public function destroy(Article $article)

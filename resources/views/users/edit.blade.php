@@ -31,7 +31,7 @@
             <div class="col-4 offset-1 mt-5">
 
               <div class="d-flex justify-content-between">
-                <div class="md-form mt-5 w-100">
+                <div class="form-group mt-5 w-100">
                   <labal class="text-muted">ニックネーム</label>
                   <strong class="text-danger">必須</strong>
                   <input type="name" id="name" name="name"  class="form-control col-6" value="{{ $user->name ?? old('name')}}" required>
@@ -45,7 +45,7 @@
        
 
                 
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <strong class="text-muted">生年月日</strong class="text-muted">
                 <input type="date" class="form-control" name="birthday" value="2000-01-01" required>
               </div>
@@ -82,98 +82,91 @@
 
               </div>
 
-              <div class="md-form mt-5"> 
+              <div class="form-group mt-5"> 
                 <label class="text-muted">出身地</label class="text-muted">
                 <input type="text" name="birthplace" class="form-control" value="{{ $user->birthplace }}">
               </div>
 
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <strong class="text-muted">身長</strong class="text-muted">
                 <input type="number" name="height" id="height" class="col-2" value="{{ $user->height }}">cm
               </div>
 
       
 
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <strong class="text-muted">体重</strong class="text-muted">
                 <input type="number" name="weight" id="weight" class="col-2" value="{{ $user->weight }}">kg
               </div>
 
               
 
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <label class="text-muted">趣味</label class="text-muted">
                 <input type="text" name="hobby" class="form-control" value="{{ $user->hobby }}">
               </div>
 
               
 
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <label class="text-muted">特技、資格</label class="text-muted">
                 <input type="text" name="skill" class="form-control" value="{{ $user->skill }}">
               </div>
 
-              
-
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <label class="text-muted">学歴</label class="text-muted">
                 <input type="text" name="background" class="form-control" value="{{ $user->background }}">
               </div>
 
-              
-
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <label class="text-muted">影響を受けたもの</label class="text-muted">
                 <input type="text" name="influence" class="form-control" value="{{ $user->influence }}">
               </div>
 
-              
-
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <label class="text-muted">Youtubeチャンネル</label class="text-muted">
                 <input type="url" name="youtube" class="form-control" value="{{ $user->youtube }}">
               </div>
 
-              
-
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <label class="text-muted">Twitterアカウント</label class="text-muted">
                 <input type="url" name="twitter" class="form-control" value="{{ $user->twitter }}">
               </div>
 
-              
-
-              <div class="md-form mt-5">
+              <div class="form-group mt-5">
                 <label class="text-muted">ブログURL</label class="text-muted">
                 <input type="url" name="blog" class="form-control" value="{{ $user->blog }}">
               </div>
 
               <input type="submit" class="btn btn-indigo mt-5 px-5" value="更新">
-                        
+          
             </div> 
-          </div>
-        </div>
-      </div>
 
-      <div class="container mb-5 " style="max-width: 100%;">
-        <div class="row border-top">
-          <div class="">
-            <div class="col-6 mt-5">
-              <div class="md-form">
-                <textarea name="PR" id="PR" cols="70" rows="30">{{ $user->PR }}</textarea>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div class="container mb-5" style="max-width: 100%;">
+                <div class="row border-top">
+                  <div class="d-flex justify-content-center">
+                    <div class="col-5 mt-5 mr-5">
+                      <div class="form-group">
+                        <textarea name="PR" id="PR" cols="70" rows="30" class="border border-light">{{ $user->PR }}</textarea>
+                      </div>
+                    </div>
+                    <div class="col-5 mt-5 ml-5">
+                      <div class="form-group">
+                        <textarea name="PR" id="PR" cols="70" rows="30">{{ $user->PR }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-      <div class="d-flex justify-content-center">
-        <input type="submit" class="btn btn-info px-5 mb-5" value="更新">
-      </div>
+                <div class="d-flex justify-content-center">
+                  <input type="submit" class="btn btn-info px-5 mb-5" value="更新">
+                </div>
 
+            </div>    
+        
+      </div>
       
-
-  </form>
+  </form> 
   @include('footer')
 @endsection
 

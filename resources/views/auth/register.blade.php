@@ -25,7 +25,11 @@
               </register>
 
        
-
+              <div class="md-form">
+                <i class="fas fa-envelope prefix grey-text"></i>
+                <input type="text" id="email" name="email" class="form-control" required value="{{ old('email') }}">
+                <label for="email">メールアドレス</label>
+              </div>
 
               <div class="md-form">
                 <i class="fa fa-lock prefix grey-text"></i>
@@ -41,7 +45,7 @@
               
 
               <div class="text-center py-4 mt-3">
-                <button class="btn btn-info" onclick="checkName()" type="submit">登録</button>
+                <button class="btn btn-info" type="submit">登録</button>
               </div>
             </form>
 

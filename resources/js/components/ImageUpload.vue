@@ -12,7 +12,7 @@
             <i :class="fileIcon" class="icon"></i>
             <p class="mt-2">ファイルをドラッグまたはドロップ</p>
           </label>
-          <input type="file" id="file" class="d-none" @change="onChangeInput" multiple>
+          <input type="file" id="file" name="image" class="d-none" @change="onChangeInput" multiple>
         </div>
       </div>
   </div>
