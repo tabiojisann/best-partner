@@ -4,7 +4,7 @@
 
 @section('content')
   @include('nav')
-    <div class="container rgba-grey-slight" style="max-width: 100%;">
+    <div class="container winter-neva-gradient" style="max-width: 100%;">
    
       <div class="row">
 
@@ -139,9 +139,9 @@
       </div>
     </div> 
 
-    <div class="container mb-5 " style="max-width: 100%;">
+    <div class="container mb-5 mt-3 " style="max-width: 100%;">
       <div class="row border-top">
-        <div class="col-8 offset-2 mt-5">
+        <div class="col-8 offset-2 mt-1">
           <div class="text">
             {!! nl2br(e($user->PR)) !!}
           </div>
