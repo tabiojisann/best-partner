@@ -5,12 +5,10 @@
 @section('content')
   @include('nav')
 
-
-
   <div class="container mt-5 mb-5">
     <div class="row">
       <div class="col-6 offset-3">
-
+      @include('errors')
         <form method="POST" action="{{ route('users.update', ['user' => $user]) }}" enctype="multipart/form-data">
           @method('PATCH')
           @csrf

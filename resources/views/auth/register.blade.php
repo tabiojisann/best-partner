@@ -15,21 +15,16 @@
           <div class="card-body">
       
             <p class="h4 text-center border-bottom py-4">新規登録</p>
-              @include('errors')
-            <form method="POST" action="{{ route('register') }}">
-              @csrf
-              <div class="md-form">
-                <i class="fa fa-user prefix grey-text"></i>
-                <input type="text" id="name" name="name" class="form-control" required>
-                <label for="name" class="font-weight-light">ユーザー名</label>
-              </div>
 
-            
-              <div class="md-form">
-                <i class="fa fa-envelope prefix grey-text"></i>
-                <input type="email" id="email" name="email" class="form-control" required>
-                <label for="email" class="font-weight-light">メールアドレス</label>
-              </div>
+            @include('errors')
+
+            <form method="POST" class="" action="{{ route('register') }}">
+              @csrf
+
+              <register :response-data="{{ json_encode($errors) }}">
+              </register>
+
+       
 
 
               <div class="md-form">
@@ -43,9 +38,10 @@
                 <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
                 <label for="password_confirmation" class="font-weight-light">パスワード(確認)</label>
               </div>
+              
 
               <div class="text-center py-4 mt-3">
-                <button class="btn btn-info" type="submit">登録</button>
+                <button class="btn btn-info" onclick="checkName()" type="submit">登録</button>
               </div>
             </form>
 

@@ -35,10 +35,6 @@
             @endif
           </div>
 
-         
-
- 
-      
           <table class="table">
         
             <thead>

@@ -24,7 +24,9 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:10',
+            'name'   => 'required|max:8',
+            'height' => ['integer', 'between:1,300'],
+            'weight' => ['integer', 'between:1,200'],
         ];
     }
 
