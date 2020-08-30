@@ -3,7 +3,7 @@
 <image-upload class="mt-5 pb-5">
 </image-upload>
 
-<div class="form-group mt-5 pb-5">
+<div class="form-group w-50 mt-5 pb-5">
   <strong>募集ポジション</strong>
   <strong class="text-danger">必須</strong>
   <div class="form-control">
@@ -60,22 +60,10 @@
       <label class="custom-control-label" for="その他(ポジション)">その他</label>
     </div>
 
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" class="custom-control-input" id="問わない(ポジション)" value="問わない" name="position"
-        <?php 
-          if( !empty($article->position)){
-            if($article->position === "問わない") {
-              echo 'checked';
-            }
-          }
-        ?>
-      >
-      <label class="custom-control-label" for="問わない(ポジション)">問わない</label>
-    </div>
   </div>
 </div>
 
-<div class="form-group mt-5 pb-5">
+<div class="form-group w-50 mt-5 pb-5">
   <strong>募集スタイル</strong>
   <strong class="text-danger">必須</strong>
 
@@ -118,19 +106,6 @@
         ?>
       >
       <label class="custom-control-label" for="その他(スタイル)">その他</label>
-    </div>
-
-    <div class="custom-control custom-radio custom-control-inline">
-      <input type="radio" class="custom-control-input bg-danger" id="問わない(スタイル)" value="問わない" name="style"
-        <?php 
-          if( !empty($article->style)){
-            if($article->style === "問わない") {
-              echo 'checked';
-            }
-          }
-        ?>
-      >
-      <label class="custom-control-label" for="問わない(スタイル)">問わない</label>
     </div>
 
   </div>

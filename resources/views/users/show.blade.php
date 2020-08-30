@@ -18,7 +18,7 @@
         <div class="col-4 offset-1 mt-5">
 
           <div class="name d-flex justify-content-between">
-            <h1 class="">{{ $user->name }}</h1>
+            <h2 class="">{{ $user->name }}</h2>
 
             @if( Auth::id() === $user->id )
               <a href="{{ route('users.edit', ['user' => $user]) }}" class="h3 ml-3"><i class="fas fa-user-edit text-primary"></i></i></a>

@@ -47,7 +47,7 @@
                 
               <div class="form-group mt-5">
                 <strong class="text-muted">生年月日</strong class="text-muted">
-                <input type="date" class="form-control" name="birthday" value="2000-01-01" required>
+                <input type="date" class="form-control" name="birthday" value="2000-05-09" required>
               </div>
 
               <label class="text-muted">性別</label class="text-muted">
@@ -146,13 +146,13 @@
                 <div class="row border-top">
                   <div class="d-flex justify-content-center">
                     <div class="col-5 mt-5 mr-5">
-                      <div class="form-group">
-                        <textarea name="PR" id="PR" cols="70" rows="30" class="border border-light">{{ $user->PR }}</textarea>
+                      <div class="form-group shadow-textarea">
+                        <textarea name="PR" id="PR" cols="70" rows="30" class="form-control z-depth-2">{{ $user->PR }}</textarea>
                       </div>
                     </div>
                     <div class="col-5 mt-5 ml-5">
-                      <div class="form-group">
-                        <textarea name="PR" id="PR" cols="70" rows="30">{{ $user->PR }}</textarea>
+                      <div class="form-group shadow-textarea">
+                        <textarea name="PR" id="PR" cols="70" rows="30" class="form-control z-depth-2">{{ $user->PR }}</textarea>
                       </div>
                     </div>
                   </div>

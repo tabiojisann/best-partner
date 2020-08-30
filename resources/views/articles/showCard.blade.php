@@ -1,7 +1,8 @@
-<div class="container mb-5">
+<div class="bg mean-fruit-gradient">
+<div class="container ">
   <div class="row" >
     <div class="col-12">
-      <div class="card mt-3">
+      <div class="card mt-5 mb-5">
         <div class="card-body pt-0">
           <div class="article-user mt-3">
             <img src="{{ $article->user->image ?: asset('logo/user.jpg') }}" class="d-inline rounded-circle" width="50" height="45" alt="">
@@ -26,4 +27,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

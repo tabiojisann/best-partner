@@ -57,7 +57,7 @@
       </div>
     </div>
     
-    <div class="container col-5 mt-5 pb-5 text-center animated fadeIn">
+    <div class="container col-5 mt-5 pb-5 text-center animated fadeInRight">
       @if(!empty($sex || $keyword_birth || $keyword_back || $age_upper || $age_lower))
         @if($users->count())
           @foreach($users as $user)
