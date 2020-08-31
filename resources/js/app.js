@@ -31,11 +31,13 @@ import './main'
 import Vue from 'vue'
 import FollowButton from './components/FollowButton'
 import ImageUpload from './components/ImageUpload'
+import Register from './components/Register'
 
 const app = new Vue({
     el: '#app',
     components: {
         FollowButton,
-        ImageUpload
+        ImageUpload,
+        Register
     }
 });

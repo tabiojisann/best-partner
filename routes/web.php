@@ -18,15 +18,18 @@ Route::get('/', 'ArticleController@index')->name('articles.index');
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/articles', 'ArticleController')->only(['show']);
 
-
-
-Route::resource('/users', 'UserController')->only(['update', 'show', 'edit']);
-
-
-Route::prefix('search')->group(function() {
-  Route::get('/users', 'UserController@search')->name('users.search');
-  Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
+Route::prefix('articles')->name('articles.')->group(function() {
+ 
 });
+
+Route::get('/confirm', 'ArticleController@confirm')->name('articles.confirm')->middleware('auth');
+Route::post('/confirm', 'ArticleController@send')->name('articles.send')->middleware('auth');
+
+Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
+Route::get('/users', 'UserController@search')->name('users.search')->middleware('auth');
+
+Route::resource('/users', 'UserController')->only(['show', 'edit', 'update']);
+
 
 
 Route::prefix('users')->name('users.')->group(function() {

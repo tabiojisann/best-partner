@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Validator;
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -22,9 +24,25 @@ class UserRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
+    { 
+        
+         
         return [
-            'name' => 'required|max:10',
+            'name'       => ['required', 'max:12'],
+            'sex'        => ['string', 'in:男性,女性', 'nullable'],
+            'birthday'   => ['date_format:"Y-m-d"', 'nullable'],
+            'age'        => ['integer', 'digits_between:1,3', 'nullable'],
+            'birthplace' => ['string', 'nullable'],
+            'height'     => ['integer', 'between:1,300', 'nullable'],
+            'weight'     => ['integer', 'between:1,200', 'nullable'],
+            'skill'      => ['string', 'nullable'],
+            'influence'  => ['string', 'nullable'],
+            'background' => ['string', 'max:30', 'nullable'],
+            'hobby'      => ['string', 'nullable'],
+            'youtube'    => ['url', 'regex:~https://www.youtube.com~', 'nullable'],
+            'twitter'    => ['url', 'regex:~https://twitter.com~', 'nullable'],
+            'blog'       => ['url', 'nullable'],
+            'PR'         => ['string', 'max:2000', 'nullable']
         ];
     }
 
@@ -50,3 +68,4 @@ class UserRequest extends FormRequest
         ];
     }
 }
+

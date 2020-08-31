@@ -19,7 +19,7 @@ return [
     'after_or_equal'       => ':attributeには、:date以降の日付を指定してください。',
     'alpha'                => ':attributeはアルファベットのみがご利用できます。',
     'alpha_dash'           => ':attributeはアルファベットとダッシュ(-)及び下線(_)がご利用できます。',
-    'alpha_num'            => ':attributeはアルファベット数字がご利用できます。',
+    'alpha_num'            => ':attributeはアルファベットか数字をご利用ください.',
     'array'                => ':attributeは配列でなくてはなりません。',
     'before'               => ':attributeには、:dateより前の日付をご利用ください。',
     'before_or_equal'      => ':attributeには、:date以前の日付をご利用ください。',
@@ -148,7 +148,8 @@ return [
     'attributes' => [
         'name' => 'ユーザー名',
         'email' => 'メールアドレス',
-        'password' => 'パスワード'
+        'password' => 'パスワード',
+        'height' => '身長',
     ],
 
 ];

@@ -24,10 +24,10 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:100',
-            'text' => 'required|max:2000',
-            'position' => 'required',
-            'style' => 'required',
+            'title'    => ['required', 'max:100'],
+            'text'     => ['required', 'max:2000'],
+            'position' => ['required', 'in:ボケ,ツッコミ,作家,その他'],
+            'style'    => ['required', 'in:漫才,コント,その他'],
         ];
     }
 

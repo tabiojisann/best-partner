@@ -4,7 +4,7 @@
 
 @section('content')
   @include('nav')
-    <div class="container rgba-grey-slight" style="max-width: 100%;">
+    <div class="container cloudy-knoxville-gradient" style="max-width: 100%;">
    
       <div class="row">
 
@@ -17,8 +17,8 @@
 
         <div class="col-4 offset-1 mt-5">
 
-          <div class="name pb-5 d-flex justify-content-between">
-            <h1 class="">{{ $user->name }}</h1>
+          <div class="name d-flex justify-content-between">
+            <h2 class="">{{ $user->name }}</h2>
 
             @if( Auth::id() === $user->id )
               <a href="{{ route('users.edit', ['user' => $user]) }}" class="h3 ml-3"><i class="fas fa-user-edit text-primary"></i></i></a>
@@ -34,11 +34,23 @@
                </follow-button>
             @endif
           </div>
-
          
+          <div class="pb-5">
 
- 
-      
+            @if(!empty($user->youtube))
+              <a type="button" href="{{ $user->youtube }}" class="btn-floating btn-lg"><i class="fab fa-youtube red-text h2"></i></a>
+            @endif
+
+            @if(!empty($user->twitter))
+              <a type="button" href="{{ $user->twitter }}" class="btn-floating btn-lg "><i class="fab fa-twitter-square blue-text h2"></i></a>
+            @endif
+
+            @if(!empty($user->blog))
+              <a type="button" href="{{ $user->blog }}" class="btn-floating btn-lg mb-2"><img src="{{ asset('logo/blog.jpg') }}" width="35"  alt=""></a>
+            @endif
+    
+          </div>
+
           <table class="table">
         
             <thead>
@@ -116,37 +128,16 @@
               </tr>
               @endif
 
-              @if(!empty($user->youtube))
-              <tr>
-                <th style="width:35%" >youtubeチャンネル</th>
-                <th >{{ $user->youtube }}</th>
-              </tr>
-              @endif
-
-              @if(!empty($user->twitter))
-              <tr>
-                <th style="width:35%" >ツイッター</th>
-                <th >{{ $user->twitter }}</th>
-              </tr>
-              @endif
-
-              @if(!empty($user->blog))
-              <tr>
-                <th style="width:35%" >ブログ</th>
-                <th >{{ $user->blog }}</th>
-              </tr>
-              @endif
-
             </thead>
           </table>
         </div>
       </div>
     </div> 
 
-    <div class="container mb-5 " style="max-width: 100%;">
-      <div class="row border-top">
-        <div class="col-8 offset-2 mt-5">
-          <div class="text">
+    <div class="container mb-5 mt-3 " style="max-width: 100%;">
+      <div class="row">
+        <div class="col-8 offset-2 mt-1">
+          <div class="text border p-5">
             {!! nl2br(e($user->PR)) !!}
           </div>
         </div>
