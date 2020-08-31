@@ -97,6 +97,7 @@ class ArticleController extends Controller
 
         return redirect()->action('ArticleController@confirm');
 
+        
     }
 
     public function confirm(Request $request, Article $article)
