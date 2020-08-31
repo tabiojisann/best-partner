@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Article;
 use App\User;
+use Carbon\Carbon;
 use Storage;
 use App\Http\Requests\ArticleRequest;
 use Intervention\Image\Facades\Image;
@@ -86,7 +87,7 @@ class ArticleController extends Controller
 
         $imagefile = $request->file('image');  
 
-        if(isset($image)){
+        if(isset($imagefile)){
             $now = date_format(Carbon::now(), 'YmdHis');
             $fileName = ($imagefile)->getClientOriginalName();
             $storePath="articles/".$now."_".$fileName;
