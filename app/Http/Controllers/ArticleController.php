@@ -7,7 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Article;
 use App\User;
 use Storage;
+use Carbon\Carbon;
 use App\Http\Requests\ArticleRequest;
+use Intervention\Image\Facades\Image;
+
 
 class ArticleController extends Controller
 {
@@ -73,8 +76,7 @@ class ArticleController extends Controller
 
     public function create() 
     {
-        $user = Auth::user();
-        return view('articles.create', ['user' => $user]);
+        return view('articles.create');
     }
 
     public function store(ArticleRequest $request, Article $article)
@@ -82,11 +84,22 @@ class ArticleController extends Controller
 
         $article->fill($request->all());
 
-        $image = $request->file('image');
 
-        if(isset($image)){
-            $fileName = ($image)->getClientOriginalName();
-            $path = Storage::disk('s3')->putFileAs('articles', $image, $fileName, 'public');
+        $now = date_format(Carbon::now(), 'YmdHis');
+        $file = $request->file('image');
+
+        if(isset($file)){
+            $fileName = ($file)->getClientOriginalName();
+            $tmpFile = $now . '_' . $fileName;
+            $tmpPath = storage_path('public/storage') . $tmpFile;
+            $image = Image::make($file)
+                     ->resize(300, null, function($constrait) {
+                         $constrait->aspectRatio();
+                     })
+                     ->save($tmpPath);
+               
+            $path = Storage::disk('s3')->putFileAs('articles', new File($tmpPath), $fileName, 'public');
+            Storage::disk('local')->delete('public/storage' . $tmpFile);
             $article->image = Storage::disk('s3')->url($path);
         }
      
@@ -127,9 +140,7 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {  
-        $user = Auth::user();
-
-        return view('articles.edit', ['article' => $article, 'user' => $user]);
+        return view('articles.edit', ['article' => $article]);
     }
 
     public function update(ArticleRequest $request, Article $article)
