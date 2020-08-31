@@ -90,13 +90,13 @@ class ArticleController extends Controller
 
         if(isset($file)){
             $fileName = ($file)->getClientOriginalName();
-            $image = Image::make($file)
-            ->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+             $image = Image::make($file)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
 
-        // configファイルに定義したS3のパスへ画像をアップロード
-        Storage::put(config('filesystems.s3.url').$fileName, (string) $image->encode());
+            // configファイルに定義したS3のパスへ画像をアップロード
+            Storage::put(config('filesystems.disks.s3.url').$name, (string) $image->encode());
         }
      
         $article->user_id = $request->user()->id; 
