@@ -90,17 +90,13 @@ class ArticleController extends Controller
 
         if(isset($file)){
             $fileName = ($file)->getClientOriginalName();
-            $tmpFile = $now . '_' . $fileName;
-            $tmpPath = storage_path('public/storage') . $tmpFile;
             $image = Image::make($file)
-                     ->resize(300, null, function($constrait) {
-                         $constrait->aspectRatio();
-                     })
-                     ->save($tmpPath);
-               
-            $path = Storage::disk('s3')->putFileAs('articles', new File($tmpPath), $fileName, 'public');
-            Storage::disk('local')->delete('public/storage' . $tmpFile);
-            $article->image = Storage::disk('s3')->url($path);
+            ->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+        // configファイルに定義したS3のパスへ画像をアップロード
+        Storage::put(config('filesystems.s3.url').$fileName, (string) $image->encode());
         }
      
         $article->user_id = $request->user()->id; 
