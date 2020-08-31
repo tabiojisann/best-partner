@@ -83,11 +83,20 @@ class ArticleController extends Controller
 
         $article->fill($request->all());
    
-        $image = $request->file('image');
+
+        $imagefile = $request->file('image');  
 
         if(isset($image)){
-            $fileName = ($image)->getClientOriginalName();
-            $path = Storage::disk('s3')->putFileAs('articles', $image, $fileName, 'public');
+            $now = date_format(Carbon::now(), 'YmdHis');
+            $fileName = ($imagefile)->getClientOriginalName();
+            $storePath="articles/".$now."_".$fileName;
+
+            $image = Image::make($imagefile)
+                ->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $path =  Storage::disk('s3') ->put($storePath, (string) $image->encode(),'public');
             $article->image = Storage::disk('s3')->url($path);
         }
      
