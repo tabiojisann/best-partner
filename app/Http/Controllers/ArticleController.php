@@ -95,15 +95,13 @@ class ArticleController extends Controller
         $request->session()->put('articles.create', $article);
 
         return redirect()->action('ArticleController@confirm');
-        // return redirect()->route('articles.confirm', ['article' => $article]);
-        // return view('articles.confirm', ['article' => $article]);
+
     }
 
     public function confirm(Request $request, Article $article)
     {
         $article = $request->session()->get("articles.create");
-		
-		//セッションに値が無い時はフォームに戻る
+
 		if(!$article){
 			return redirect()->action("ArticleController@create");
 		}
@@ -125,7 +123,6 @@ class ArticleController extends Controller
 
         return redirect()->route('articles.index', ['article' => $article]);
     }
-
 
 
     public function edit(Article $article)

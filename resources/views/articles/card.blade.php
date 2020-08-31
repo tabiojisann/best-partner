@@ -94,6 +94,8 @@
       </tbody>
     </table>
 
+    <p class="text-muted indexText">{{ $article->text }}</p>
+
 
 
     <button type="button" class="btn btn-success px-5"><i class="fas fa-star text-warning mr-1"></i>気になる</button>
@@ -101,7 +103,7 @@
       <i class="fas fa-align-justify text-info">   </i>  詳細
     </a>
 
-    <p class="float-right mt-4">{{ $article->created_at->format('Y年 n月 j日 / H:i') }}</p>
+    <p class="float-right mt-4 text-muted">{{ $article->created_at->format('Y年 n月 j日 / H:i') }}</p>
 
   </div>
 </div>
