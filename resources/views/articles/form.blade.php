@@ -3,10 +3,10 @@
 <image-upload class="mt-5 pb-5">
 </image-upload>
 
-<div class="form-group w-50 mt-5 pb-5">
+<div class="form-group w-100 mt-5 pb-5 text-center">
   <strong>募集ポジション</strong>
   <strong class="text-danger">必須</strong>
-  <div class="form-control">
+  <div class="form-control ">
 
     <div class="custom-control custom-radio custom-control-inline">
       <input type="radio" class="custom-control-input bg-danger" id="ボケ" name="position" value="ボケ"  
@@ -63,7 +63,7 @@
   </div>
 </div>
 
-<div class="form-group w-50 mt-5 pb-5">
+<div class="form-group w-100 mt-5 pb-5 text-center">
   <strong>募集スタイル</strong>
   <strong class="text-danger">必須</strong>
 

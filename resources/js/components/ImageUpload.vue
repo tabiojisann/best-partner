@@ -1,24 +1,30 @@
 <template>
 
   <div class="image-uploader">
-    <div class="input-button text-center">
-      <label for="file" class="btn btn-blue-grey btn-sm">
-        <p class="mt-3">写真を選択してください</p>
-        <input type="file" id="file" ref="file" name="image" class="d-none" @change="setImage"/>
-      </label>
-    </div>
 
     <div class="preview text-center">
-      <img :src="data.image" alt="" height="100" width="300">
+      <img :src="this.data.image" alt="" height="290" width="290">
+      <span class="text-danger h5" v-if="this.data.image" @click="resetFile()">削除</span>
+    </div>
+
+    <div class="input-button text-center">
+      <label for="file" class="btn-floating btn-lg lighten-1 mt-0 ">
+        <div class="btn blue-gradient btn-sm">
+          <span><i class="fas fa-cloud-upload-alt mr-2" aria-hidden="true"></i>画像を選択してください</span>
+          <input type="file" id="file" name="image" class="d-none" @change="setImage"/>
+        </div>
+      </label>
     </div>
   </div>
 
 </template>
+
 <script>
 export default {
   data() {
     return {
       data: {
+        text: "",
         image: "",
         name: "",
       }
@@ -26,14 +32,21 @@ export default {
   },
   methods: {
     setImage(e) {
-      const files = this.$refs.file;
-      const fileImg = files.files[0];
-      if (fileImg.type.startsWith("image/")) {
-        this.data.image = window.URL.createObjectURL(fileImg);
-        this.data.name = fileImg.name;
-        this.data.type = fileImg.type;
+      const file = (e.target.files || e.dataTransfer)[0]
+      if (file.type.startsWith("image/")) {
+        this.data.image = window.URL.createObjectURL(file);
+        this.data.name = file.name;
+        this.data.type = file.type;
       }
     },
+
+    resetFile(e) {
+      const input = this.$refs.file;
+      this.data.type = 'text';
+      this.data.type = 'file';
+      this.data.image = '';
+
+    }
 
   }
 };
@@ -44,8 +57,9 @@ export default {
     border: dashed 1px; 
     position: relative;
     margin: 0 auto;
-    height: 300px;
+    height: 320px;
     width: 300px;
   }
+
   
 </style>
