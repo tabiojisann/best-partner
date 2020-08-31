@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Article;
 use App\User;
 use Storage;
-use Carbon\Carbon;
 use App\Http\Requests\ArticleRequest;
 use Intervention\Image\Facades\Image;
 
@@ -83,20 +82,13 @@ class ArticleController extends Controller
     {
 
         $article->fill($request->all());
+   
+        $image = $request->file('image');
 
-
-        $now = date_format(Carbon::now(), 'YmdHis');
-        $file = $request->file('image');
-
-        if(isset($file)){
-            $fileName = ($file)->getClientOriginalName();
-             $image = Image::make($file)
-                ->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-
-            // configファイルに定義したS3のパスへ画像をアップロード
-            Storage::put(config('filesystems.disks.s3.url').$name, (string) $image->encode());
+        if(isset($image)){
+            $fileName = ($image)->getClientOriginalName();
+            $path = Storage::disk('s3')->putFileAs('articles', $image, $fileName, 'public');
+            $article->image = Storage::disk('s3')->url($path);
         }
      
         $article->user_id = $request->user()->id; 
