@@ -12,6 +12,7 @@ use App\Http\Requests\ArticleRequest;
 use Intervention\Image\Facades\Image;
 
 
+
 class ArticleController extends Controller
 {
 
@@ -25,7 +26,7 @@ class ArticleController extends Controller
         $user     = Auth::user();
         $articles = Article::all()->sortByDesc('created_at')
                     ->load('user');
-        
+
         return view('articles.index', ['articles' => $articles, 'user' => $user]);
     }
 
@@ -90,16 +91,19 @@ class ArticleController extends Controller
         if(isset($imagefile)){
             $now = date_format(Carbon::now(), 'YmdHis');
             $fileName = ($imagefile)->getClientOriginalName();
+            $extension =($imagefile)->getClientOriginalExtension();
             $storePath="articles/".$now."_".$fileName;
 
-            $image = Image::make($imagefile)
-                ->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $image = Image::make($imagefile);
+            $image->resize(300,300);
 
-            $path =  Storage::disk('s3') ->put($storePath, (string) $image->encode(),'public');
-            $article->image = Storage::disk('s3')->url($path);
-        }
+
+            Storage::disk('s3')->put($storePath, (string)$image->encode(), 'public');
+
+            $article->image = Storage::disk('s3')->url($storePath);
+        };
+
+        
      
         $article->user_id = $request->user()->id; 
 

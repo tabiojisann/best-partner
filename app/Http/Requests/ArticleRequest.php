@@ -24,6 +24,7 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
+            'image' => 'nullable|file|image|mimes:jpeg,png,jpg,gif|max:2048',
             'title'    => ['required', 'max:100'],
             'text'     => ['required', 'max:2000'],
             'position' => ['required', 'in:ボケ,ツッコミ,作家,その他'],
