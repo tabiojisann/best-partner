@@ -7,6 +7,7 @@
       募集一覧
     </a> 
   </li>
+
   <li class="nav-item">
     <a  href="{{ route('users.search') }}"  class="nav-link 
     {{ $hasUsers ? 'active morpheus-den-gradient
@@ -15,6 +16,16 @@
       ユーザー検索
     </a>
   </li>
+
+  <li class="nav-item">
+    <a  href="{{ route('users.keep', ['user' => $user]) }}"  class="nav-link 
+    {{ $hasKeeps ? 'active morpheus-den-gradient
+                    text-white animated fadeIn' 
+                  : 'text-muted' }}">
+      気になるリスト
+    </a>
+  </li>
+  
 </ul>
 
 

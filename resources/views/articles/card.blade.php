@@ -98,7 +98,14 @@
 
 
 
-    <button type="button" class="btn btn-success px-5"><i class="fas fa-star text-warning mr-1"></i>気になる</button>
+    <article-keep
+     :initial-is-keep='@json($article->isKeep(Auth::user()))'
+     :initial-count-keeps='@json($article->count_keeps)'
+     :authorized='@json(Auth::check())'
+     endpoint="{{ route('articles.keep', ['article' => $article]) }}"
+     >
+    </article-keep>
+    
     <a href="{{ route('articles.show', ['article' => $article]) }}" class="btn btn-mdb-color px-5">
       <i class="fas fa-align-justify text-info">   </i>  詳細
     </a>

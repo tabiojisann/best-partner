@@ -108,8 +108,6 @@ class UserController extends Controller
          return view('users.show', ['user' => $user, 'age' => $age]);
      }
 
-     
-
      public function follow(Request $request, User $user)
      {
         
@@ -130,5 +128,15 @@ class UserController extends Controller
         return[
             'id' => $user->id,
         ];
+     }
+
+     public function keepIndex(User $user)
+     {
+         $articles = $user->keeps->sortByDesc('created_at');
+
+         return view('users.keeps', [
+            'user' => $user,
+            'articles' => $articles,
+         ]);
      }
 }

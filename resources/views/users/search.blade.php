@@ -5,7 +5,7 @@
 @section('content')
   @include('nav')
 
-  @include('articles.tabs', ['hasArticles' => false, 'hasUsers' => true])
+  @include('articles.tabs', ['hasArticles' => false, 'hasUsers' => true, 'hasKeeps' => false])
 
 
   <div class="row cloudy-knoxville-gradient">

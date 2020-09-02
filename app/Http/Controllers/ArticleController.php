@@ -111,7 +111,6 @@ class ArticleController extends Controller
 
         return redirect()->action('ArticleController@confirm');
 
-        
     }
 
     public function confirm(Request $request, Article $article)
@@ -120,7 +119,7 @@ class ArticleController extends Controller
 
 		if(!$article){
 			return redirect()->action("ArticleController@create");
-		}
+		}  
 		return view("articles.confirm",['article' => $article]);
     }
 
@@ -151,13 +150,23 @@ class ArticleController extends Controller
         
         $article->fill($request->all());
 
-        $image = $request->file('image');
+        $imagefile = $request->file('image'); 
 
-        if(isset($image)){
-            $fileName = ($image)->getClientOriginalName();
-            $path = Storage::disk('s3')->putFileAs('articles', $image, $fileName, 'public');
-            $article->image = Storage::disk('s3')->url($path);
-        }
+        if(isset($imagefile)){
+            $now = date_format(Carbon::now(), 'YmdHis');
+            $fileName = ($imagefile)->getClientOriginalName();
+            $extension =($imagefile)->getClientOriginalExtension();
+            $storePath="articles/".$now."_".$fileName;
+
+            $image = Image::make($imagefile);
+            $image->resize(300,300);
+
+
+            Storage::disk('s3')->put($storePath, (string)$image->encode(), 'public');
+
+            $article->image = Storage::disk('s3')->url($storePath);
+        };
+
      
         $request->session()->put('articles.create', $article);
 
@@ -177,6 +186,33 @@ class ArticleController extends Controller
     {
         $user     = Auth::user();
         return view('articles.show', ['article' => $article, 'user' => $user]);
+    }
+
+    public function keep(Request $request, Article $article )
+    {
+        $user = Auth::user();
+
+        if($article->user->id === $user->id) {
+            return abort('404', 'Cannot keep yourself.');
+        }
+
+        $article->keeps()->detach($request->user()->id);
+        $article->keeps()->attach($request->user()->id);
+
+        return [
+            'id' => $article->id,
+            'countKeeps' => $article->count_keeps,
+        ];
+    }
+
+    public function unkeep(Request $request, Article $article)
+    {
+        $article->keeps()->detach($request->user()->id);
+
+        return [
+            'id' => $article->id,
+            'countKeeps' => $article->count_keeps,
+        ];
     }
 }
 

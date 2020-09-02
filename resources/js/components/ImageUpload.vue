@@ -4,17 +4,19 @@
 
     <div class="preview text-center">
       <img :src="this.data.image" alt="" height="290" width="290">
-      <span class="text-danger h5" v-if="this.data.image" @click="resetFile()">削除</span>
+      <span class="text-danger h5"  v-if="this.data.image" @click="resetFile()">削除</span>
     </div>
 
     <div class="input-button text-center">
       <label for="file" class="btn-floating btn-lg lighten-1 mt-0 ">
         <div class="btn blue-gradient btn-sm">
           <span><i class="fas fa-cloud-upload-alt mr-2" aria-hidden="true"></i>画像を選択してください</span>
-          <input type="file" id="file" name="image" class="d-none" @change="setImage"/>
+          
         </div>
       </label>
+     
     </div>
+     <input type="file" id="file" name="image" value="" class="" @change="setImage"/>
   </div>
 
 </template>
@@ -24,15 +26,15 @@ export default {
   data() {
     return {
       data: {
-        text: "",
-        image: "",
-        name: "",
+        text: '',
+        image: '',
+        name: '',
       }
     };
   },
   methods: {
     setImage(e) {
-      const file = (e.target.files || e.dataTransfer)[0]
+      const file = (e.target.files || e.dataTransfer.file)[0]
       if (file.type.startsWith("image/")) {
         this.data.image = window.URL.createObjectURL(file);
         this.data.name = file.name;
@@ -45,7 +47,7 @@ export default {
       this.data.type = 'text';
       this.data.type = 'file';
       this.data.image = '';
-
+      
     }
 
   }

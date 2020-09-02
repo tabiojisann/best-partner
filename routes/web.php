@@ -31,11 +31,16 @@ Route::get('/users', 'UserController@search')->name('users.search')->middleware(
 Route::resource('/users', 'UserController')->only(['show', 'edit', 'update']);
 
 
+Route::prefix('articles')->name('articles.')->group(function () {
+  Route::put('/{article}/keep', 'ArticleController@keep')->name('keep')->middleware('auth');
+  Route::delete('/{article}/keep', 'ArticleController@unkeep')->name('unkeep')->middleware('auth');
+});
 
 Route::prefix('users')->name('users.')->group(function() {
   Route::middleware('auth')->group(function() {
     Route::put('/{user}/follow', 'UserController@follow')->name('follow');
     Route::delete('/{user}/follow', 'UserController@unfollow')->name('unfollow');
+    Route::get('/{user}/keeps', 'UserController@keepIndex')->name('keep');
   });
 });
 
