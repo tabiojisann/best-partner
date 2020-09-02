@@ -16,7 +16,7 @@
           <div class="row">
 
             <div class="col-4 offset-1 mt-5 pb-5">
-              <div class="input-group mt-5 pb-5">
+              <!-- <div class="input-group mt-5 pb-5">
                 
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="image"><i class="fas fa-image"></i></span>
@@ -25,7 +25,9 @@
                   <input type="file" class="custom-file-input" name="image" id="image" aria-describedby="image-area">
                   <label class="custom-file-label" for="image">イメージ画像</label>
                 </div>
-              </div>
+              </div> -->
+              <image-upload class="mt-5 pb-5">
+              </image-upload>
             </div>
 
             <div class="col-4 offset-1 mt-5">
@@ -89,14 +91,14 @@
 
               <div class="form-group mt-5">
                 <strong class="text-muted">身長</strong class="text-muted">
-                <input type="number" name="height" id="height" class="col-2" value="{{ $user->height }}">cm
+                <input type="number" name="height" id="height" class="col-4" value="{{ $user->height }}">cm
               </div>
 
       
 
               <div class="form-group mt-5">
                 <strong class="text-muted">体重</strong class="text-muted">
-                <input type="number" name="weight" id="weight" class="col-2" value="{{ $user->weight }}">kg
+                <input type="number" name="weight" id="weight" class="col-4" value="{{ $user->weight }}">kg
               </div>
 
               

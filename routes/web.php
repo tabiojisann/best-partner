@@ -41,6 +41,7 @@ Route::prefix('users')->name('users.')->group(function() {
     Route::put('/{user}/follow', 'UserController@follow')->name('follow');
     Route::delete('/{user}/follow', 'UserController@unfollow')->name('unfollow');
     Route::get('/{user}/keeps', 'UserController@keepIndex')->name('keep');
+    Route::get('/{user}/articles', 'UserController@myArticle')->name('articles');
   });
 });
 

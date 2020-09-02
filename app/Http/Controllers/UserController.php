@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Article;
 use Carbon\Carbon;
 use Storage;
 use App\Http\Requests\UserRequest;
@@ -135,6 +136,16 @@ class UserController extends Controller
          $articles = $user->keeps->sortByDesc('created_at');
 
          return view('users.keeps', [
+            'user' => $user,
+            'articles' => $articles,
+         ]);
+     }
+
+     public function myArticle(User $user)
+     {
+         $articles = $user->articles->sortByDesc('created_at');
+
+         return view('users.myArticles', [
             'user' => $user,
             'articles' => $articles,
          ]);

@@ -5,6 +5,8 @@
 @section('content')
   @include('nav')
 
+  @include('top')
+
   @include('articles.tabs', ['hasArticles' => false, 'hasUsers' => true, 'hasKeeps' => false])
 
 

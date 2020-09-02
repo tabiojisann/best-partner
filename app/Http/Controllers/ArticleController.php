@@ -8,6 +8,7 @@ use App\Article;
 use App\User;
 use Carbon\Carbon;
 use Storage;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ArticleRequest;
 use Intervention\Image\Facades\Image;
 
@@ -75,9 +76,9 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function create() 
+    public function create(Article $article) 
     {
-        return view('articles.create');
+        return view('articles.create', ['article' => $article]);
     }
 
     public function store(ArticleRequest $request, Article $article)
@@ -91,7 +92,7 @@ class ArticleController extends Controller
         if(isset($imagefile)){
             $now = date_format(Carbon::now(), 'YmdHis');
             $fileName = ($imagefile)->getClientOriginalName();
-            $extension =($imagefile)->getClientOriginalExtension();
+
             $storePath="articles/".$now."_".$fileName;
 
             $image = Image::make($imagefile);
@@ -155,7 +156,7 @@ class ArticleController extends Controller
         if(isset($imagefile)){
             $now = date_format(Carbon::now(), 'YmdHis');
             $fileName = ($imagefile)->getClientOriginalName();
-            $extension =($imagefile)->getClientOriginalExtension();
+
             $storePath="articles/".$now."_".$fileName;
 
             $image = Image::make($imagefile);

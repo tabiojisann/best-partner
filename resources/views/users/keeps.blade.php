@@ -5,6 +5,8 @@
 
 @section('content')
   @include('nav')
+
+  @include('top')
   
   @include('articles.tabs', ['hasArticles' => false, 'hasUsers' => false, 'hasKeeps' => true])
   <div class="col-6 offset-1 pb-5">
@@ -12,5 +14,7 @@
       @include('articles.card')
     @endforeach
   </div>
+
+  @include('footer')
 
 @endsection

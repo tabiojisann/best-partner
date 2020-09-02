@@ -4,6 +4,12 @@
 
 @section('content')
   @include('nav')
+  
+  @if( Auth::id() === $user->id )
+    @include('users.tabs',['hasShow' => true, 'hasMyArticles' => false])
+  @endif
+    
+ 
     <div class="container cloudy-knoxville-gradient" style="max-width: 100%;">
    
       <div class="row">
