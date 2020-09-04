@@ -9,12 +9,15 @@
   @include('top')
   
   @include('articles.tabs', ['hasArticles' => false, 'hasUsers' => false, 'hasKeeps' => true])
-  <div class="col-6 offset-1 pb-5">
     @foreach($articles as $article)
-      @include('articles.card')
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-12">
+            @include('articles.card')
+          </div>
+        </div>
+      </div>
     @endforeach
-  </div>
-
   @include('footer')
 
 @endsection

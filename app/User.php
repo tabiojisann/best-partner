@@ -84,6 +84,10 @@ class User extends Authenticatable
             : false;
     }
 
+    public function getPrefNameAttribute() {
+        return config('prefecture.'.$this->birthplace);
+    }
+
 }
 
 

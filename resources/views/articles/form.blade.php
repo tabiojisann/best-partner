@@ -1,11 +1,9 @@
 @csrf
 
-
-<image-upload class="mt-5 pb-5"
-              v-bind:article="{{ $article ?? '' }}">
-</image-upload>
-
-  <!-- <img src="{{ $article->image ?? '' }}" alt=""> -->
+<article-image-upload 
+  class="mt-5 pb-5"
+  v-bind:article="{{ $article ?? '' }}">
+</article-image-upload>
 
 <div class="form-group w-100 mt-5 pb-5 text-center">
   <strong>募集ポジション</strong>

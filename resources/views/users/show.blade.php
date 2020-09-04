@@ -14,20 +14,74 @@
    
       <div class="row">
 
-        <div class="col-5 offset-1 mt-5 pb-5">
-          <div class="view overlay">
-            <img class="card-img-top" src="{{ $user->image ?: asset('logo/NoImage.jpg') }}"  alt="photo">
-            <div class="mask rgba-white-slight"></div>
+        <div class="col-5 offset-1  mt-5 pb-5">
+          
+          <a type="button" class="text-white" data-toggle="modal" data-target="#centralModalMd">
+            <div class="view overlay">
+              <img class="card-img-top" src="{{ $user->image ?: asset('logo/NoImage.jpg') }}"  alt="photo">
+              <div class="mask flex-center rgba-stylish-light">
+                <i class="fas fa-image h3"></i>
+                <p class="white-text">イメージ画像を変更する</p>
+              </div>
+            </div>
+          </a>
+
+ 
+          <div class="modal fade" id="centralModalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-lg" role="document">
+
+                <form action="{{ route('users.imageUpdate', ['user' => $user]) }}" method="POST" enctype="multipart/form-data">
+                  @method('PATCH')
+                  @csrf
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title w-100 " id="myModalLabel">イメージ画像</h5>
+                      @include('errors');
+                    </div>
+                    <div class="container mt-3">
+                      <div class="row">
+                        <div class="col-12">
+                            <user-image-upload
+                            :user="{{ $user ?? ''}}">
+                            </user-image-upload>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-end">
+                          <button type="button" class="btn btn-outline-info waves-effect text-black btn-sm" data-dismiss="modal">キャンセル</button>
+                          <button type="submit" class="btn btn-default text-white btn-md float-right">更新</button>
+                        </div>
+                    </div>
+                  </div>
+                </form>
+
+              
+            </div>
           </div>
+          <!-- Central Modal Small -->
+            
+           
+          <!-- <div class=" mt-5 pb-5">
+            <div class="input-group mt-5 pb-5">
+              
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="image"><i class="fas fa-image"></i></span>
+              </div>
+              <div class="custom-file w-50">
+                <input type="file" class="custom-file-input" name="image" id="image" aria-describedby="image-area">
+                <label class="custom-file-label" for="image">イメージ画像</label>
+              </div>
+            </div>
+          </div> -->
         </div>
 
-        <div class="col-4 offset-1 mt-5">
+        <div class="col-4 offset-1 bg-success mt-5">
 
           <div class="name d-flex justify-content-between">
             <h2 class="">{{ $user->name }}</h2>
 
             @if( Auth::id() === $user->id )
-              <a href="{{ route('users.edit', ['user' => $user]) }}" class="h3 ml-3"><i class="fas fa-user-edit text-primary"></i></i></a>
+              <a href="{{ route('users.profileEdit', ['user' => $user]) }}" class="h3 ml-3"><i class="fas fa-user-edit text-primary"></i></i></a>
             @endif
 
             @if( Auth::id() !== $user->id )
@@ -140,10 +194,18 @@
       </div>
     </div> 
 
+ 
+ 
     <div class="container mb-5 mt-3 " style="max-width: 100%;">
+ 
       <div class="row">
+
         <div class="col-8 offset-2 mt-1">
+ 
           <div class="text border p-5">
+          @if( Auth::id() === $user->id )
+      <a href="{{ route('users.PRedit', ['user' => $user]) }}" class="float-right h3 ml-3"><i class="fas fa-user-edit text-primary"></i></i></a>
+          @endif
             {!! nl2br(e($user->PR)) !!}
           </div>
         </div>

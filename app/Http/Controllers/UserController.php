@@ -10,6 +10,7 @@ use App\Article;
 use Carbon\Carbon;
 use Storage;
 use App\Http\Requests\UserRequest;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -44,9 +45,11 @@ class UserController extends Controller
             $query->where('birthplace', 'LIKE', "%{$keyword_birth}%");
         }
 
+
         if(!empty($age_lower)) {
-            $query->where('age', '>=', $age_lower)->get();
+           $query->where('age', '>=', $age_lower)->get();
         }
+        
         if(!empty($age_upper)) {
             $query->where('age', '<=', $age_upper)->get();
         }
@@ -79,25 +82,17 @@ class UserController extends Controller
         ]);
     }
 
-     public function edit(User $user)
+     public function profileEdit(User $user)
      {
-        return view('users.edit', [
+        return view('users.profileEdit', [
             'user' => $user,
         ]);
      }
 
-     public function update(UserRequest $request, User $user)
+     public function profileUpdate(UserRequest $request, User $user)
      {
 
         $user->fill($request->all());  
-
-        $image = $request->file('image');
-     
-        if(isset($image)){
-            $fileName = ($image)->getClientOriginalName();
-            $path = Storage::disk('s3')->putFileAs('users', $image, $fileName, 'public');
-            $user->image = Storage::disk('s3')->url($path);
-        }
 
         $date = Carbon::parse($user->birthday);
         $age  = $date->age;
@@ -107,6 +102,56 @@ class UserController extends Controller
         $user->save();
 
          return view('users.show', ['user' => $user, 'age' => $age]);
+     }
+
+     public function PRedit(User $user)
+     {
+        
+        return view('users.PRedit', [
+            'user' => $user,
+        ]);
+     }
+
+     public function PRupdate(UserRequest $request, User $user)
+     {
+        
+        $user->fill($request->only(['PR']));
+        $user->save();
+         
+         return view('users.show', [
+             'user' => $user,
+         ]);
+     }
+
+     public function imageUpdate(UserRequest $request, User $user)
+     {
+        $user->fill($request->only(['image']));
+
+        $type = $request->getMineType();
+        dd($type);
+
+        $imagefile = $request->file('image'); 
+
+        if(isset($imagefile)){
+            $now = date_format(Carbon::now(), 'YmdHis');
+            $fileName = ($imagefile)->getClientOriginalName();
+
+            $storePath="articles/".$now."_".$fileName;
+
+            $image = Image::make($imagefile);
+            $image->resize(500,500);
+
+
+            Storage::disk('s3')->put($storePath, (string)$image->encode(), 'public');
+
+            $user->image = Storage::disk('s3')->url($storePath);
+        };
+ 
+        $user->save();
+         
+         return view('users.show', [
+             'user' => $user,
+         ]);
      }
 
      public function follow(Request $request, User $user)

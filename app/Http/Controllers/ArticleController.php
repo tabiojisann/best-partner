@@ -8,6 +8,7 @@ use App\Article;
 use App\User;
 use Carbon\Carbon;
 use Storage;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\ArticleRequest;
 use Intervention\Image\Facades\Image;
@@ -137,6 +138,8 @@ class ArticleController extends Controller
 
         $request->session()->forget("article.create");
 
+        Session::flash('flash_message', 'The post was just trashed.');
+
         return redirect()->route('articles.index', ['article' => $article]);
     }
 
@@ -148,7 +151,6 @@ class ArticleController extends Controller
 
     public function update(ArticleRequest $request, Article $article)
     {
-        
         $article->fill($request->all());
 
         $imagefile = $request->file('image'); 
@@ -177,10 +179,22 @@ class ArticleController extends Controller
 
     public function destroy(Article $article)
     {
-     
+        
         $article->delete();
 
         return redirect()->route('articles.index');
+    }
+
+    public function imageDestroy(Article $article)
+    {
+        
+
+    
+        
+        $disk = Storage::disk('s3');
+        $disk->delete($article->image);
+
+        return redirect()->route('articles.edit', ['article', $article]);
     }
 
     public function show(Article $article, User $user)

@@ -8,6 +8,12 @@
   </div>
 @endguest
 
+@if (session('flash_message'))
+            <div class="flash_message">
+                {{ session('flash_message') }}
+            </div>
+        @endif
+
 @auth
   <div class="container border border-success my-4">
     <a href="{{ route('users.show', ['user' => $user]) }}" class="text-muted d-flex justify-content-center">

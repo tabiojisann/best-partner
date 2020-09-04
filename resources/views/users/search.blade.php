@@ -11,7 +11,7 @@
 
 
   <div class="row cloudy-knoxville-gradient">
-    <div class="container col-7">
+    <div class="container col-6">
       
       <div class="border border-info p-5 m-5">
         <form action="{{ route('users.search') }}" method="GET">
@@ -38,6 +38,27 @@
             </div>
               
             <input class="form-control w-25 " type="text" name="keyword_birth" placeholder="出身地" aria-label="Search" value="{{ $keyword_birth }}">
+
+<!-- 
+            <div class="form-group mt-5">
+                <select type="text" name="keyword_birth"  aria-label="Search" class="form-control">
+                    @foreach(config('prefecture') as $key => $name)
+                      <option value="{{ $key }}"
+                      <?php
+                        if(!empty($keyword_birth)) {
+                          if($keyword_birth == $key) {
+                            echo 'selected';
+                          }
+                        }
+                      ?>
+                      >
+                      {{ $name }}
+                      </option>
+                    @endforeach
+                </select>
+              </div> -->
+
+
           </div>
           
         
@@ -59,15 +80,29 @@
       </div>
     </div>
     
-    <div class="container col-5 mt-5 pb-5 text-center animated fadeInRight">
-      @if(!empty($sex || $keyword_birth || $keyword_back || $age_upper || $age_lower))
+    <div class="container col-6 mt-5 pb-5 text-center animated fadeInRight">
+      @if(!empty($sex || $keyword_birth || $keyword_back || $age_upper || $age_lower) && $age_lower >= 0)
         @if($users->count())
           @foreach($users as $user)
           <a href="{{ route('users.show', ['user' => $user]) }}" class="d-block animated fadeIn slow">
-            <img src="{{ $user->image ?: asset('logo/user.jpg') }}"  class="d-inline rounded-circle" height="50" width="45"  alt="">
-            <p>{{ $user->name }}</p>
-            <p>{{ $user->sex }}</p>
-            <b>{{ $user->age }} 才</b>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="th-sm">Name</th>
+                  <th class="th-sm">性別</th>
+                  <th class="th-sm">年齢</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class=""><img src="{{ $user->image ?: asset('logo/user.jpg') }}"  class="d-inline rounded-circle" height="40" width="40"  alt=""></td>
+                  <td>{{ $user->name }}</td>
+                  <td>{{ $user->sex }}</td>
+                  <td>{{ $user->age }}</td>
+                </tr>
+              </tbody>
+            </table>
           </a>
           @endforeach
         @else

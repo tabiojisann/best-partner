@@ -10,7 +10,7 @@
     <div class="preview text-center"  v-if="this.article.image">
       <img :src="this.article.image" ref="image"  height="300" width="300" alt="" @change="dropFile">
       <span class="text-danger h5"  v-if="this.article.image" @click="dropFile()">削除</span>
-    </div>
+    </div> 
 
     <p class="text-center" @click="check">
       チェック
@@ -24,12 +24,7 @@
       </label>
     </div>
 
-    <div v-if="!this.article.image">
-      <input type="file" id="file" ref="file" name="image"  value="" class="" @change="setImage"/>
-    </div>
-    <div v-if="this.article.image">
-      <input type="file" id="file" ref="file" name="image"  value="" class="" @change="dropFile"/>
-    </div>
+    <input  type="file" id="file" ref="file" name="image"  value="" class="" @change="setImage"/>
 
   </div>
 

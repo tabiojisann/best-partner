@@ -28,7 +28,8 @@ class UserRequest extends FormRequest
         
          
         return [
-            'name'       => ['required', 'max:12'],
+            'name'       => ['max:12'],
+            'image'      => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
             'sex'        => ['string', 'in:男性,女性', 'nullable'],
             'birthday'   => ['date_format:"Y-m-d"', 'nullable'],
             'age'        => ['integer', 'digits_between:1,3', 'nullable'],
@@ -42,7 +43,7 @@ class UserRequest extends FormRequest
             'youtube'    => ['url', 'regex:~https://www.youtube.com~', 'nullable'],
             'twitter'    => ['url', 'regex:~https://twitter.com~', 'nullable'],
             'blog'       => ['url', 'nullable'],
-            'PR'         => ['string', 'max:2000', 'nullable']
+            'PR'         => ['string', 'max:20', 'nullable']
         ];
     }
 

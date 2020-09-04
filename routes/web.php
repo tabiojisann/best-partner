@@ -34,6 +34,7 @@ Route::resource('/users', 'UserController')->only(['show', 'edit', 'update']);
 Route::prefix('articles')->name('articles.')->group(function () {
   Route::put('/{article}/keep', 'ArticleController@keep')->name('keep')->middleware('auth');
   Route::delete('/{article}/keep', 'ArticleController@unkeep')->name('unkeep')->middleware('auth');
+  Route::delete('/{article}/imageDestroy', 'ArticleController@imageDestroy')->name('imageDestroy')->middleware('auth');
 });
 
 Route::prefix('users')->name('users.')->group(function() {
@@ -42,6 +43,11 @@ Route::prefix('users')->name('users.')->group(function() {
     Route::delete('/{user}/follow', 'UserController@unfollow')->name('unfollow');
     Route::get('/{user}/keeps', 'UserController@keepIndex')->name('keep');
     Route::get('/{user}/articles', 'UserController@myArticle')->name('articles');
+    Route::get('/{user}/profileEdit', 'UserController@profileEdit')->name('profileEdit');
+    Route::patch('/{user}/profileUpdate', 'UserController@profileUpdate')->name('profileUpdate');
+    Route::get('/{user}/PRedit', 'UserController@PRedit')->name('PRedit');
+    Route::patch('/{user}/PRupdate', 'UserController@PRupdate')->name('PRupdate');
+    Route::patch('/{user}/imageUpdate', 'UserController@imageUpdate')->name('imageUpdate');
   });
 });
 

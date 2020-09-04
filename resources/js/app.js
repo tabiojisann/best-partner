@@ -29,17 +29,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 import './bootstrap'
 import './main'
 import Vue from 'vue'
-import ArticleKeep from './components/ArticleKeep'
-import FollowButton from './components/FollowButton'
-import ImageUpload from './components/ImageUpload'
-import Register from './components/Register'
+import ArticleKeep from './components/Article/ArticleKeep'
+import FollowButton from './components/User/FollowButton'
+import ArticleImageUpload from './components/Article/ArticleImageUpload'
+import UserImageUpload from './components/User/UserImageUpload'
+import Register from './components/User/Register'
 
 const app = new Vue({
     el: '#app',
     components: {
         ArticleKeep,
         FollowButton,
-        ImageUpload,
+        ArticleImageUpload,
+        UserImageUpload,
         Register
     }
 });
