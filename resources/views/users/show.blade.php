@@ -20,7 +20,7 @@
 
       <div class="row">
 
-        <div class="col-5 offset-1  mt-5 pb-5">
+        <div class="col-12 col-md-5 offset-md-1 mt-5 pb-5">
           
           <a type="button" class="text-white" data-toggle="modal" data-target="#centralModalMd">
             <div class="view overlay">
@@ -41,10 +41,13 @@
                   @method('PATCH')
                   @csrf
                   <div class="modal-content">
+                    
                     <div class="modal-header">
                       <h5 class="modal-title w-100 " id="myModalLabel">イメージ画像</h5>
-                      @include('errors');
                     </div>
+
+                    @include('errors')
+
                     <div class="container mt-3">
                       <div class="row">
                         <div class="col-12">
@@ -53,6 +56,7 @@
                             </user-image-upload>
                         </div>
                       </div>
+                      
                       <div class="d-flex justify-content-end">
                           <button type="button" class="btn btn-outline-info waves-effect text-black btn-sm" data-dismiss="modal">キャンセル</button>
                           <button type="submit" class="btn btn-default text-white btn-md float-right">更新</button>
@@ -64,24 +68,9 @@
               
             </div>
           </div>
-          <!-- Central Modal Small -->
-            
-           
-          <!-- <div class=" mt-5 pb-5">
-            <div class="input-group mt-5 pb-5">
-              
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="image"><i class="fas fa-image"></i></span>
-              </div>
-              <div class="custom-file w-50">
-                <input type="file" class="custom-file-input" name="image" id="image" aria-describedby="image-area">
-                <label class="custom-file-label" for="image">イメージ画像</label>
-              </div>
-            </div>
-          </div> -->
         </div>
 
-        <div class="col-4 offset-1 bg-success mt-5">
+        <div class="col-12 col-md-4 offset-md-1 mt-5">
 
           <div class="name d-flex justify-content-between">
             <h2 class="">{{ $user->name }}</h2>
@@ -206,7 +195,7 @@
  
       <div class="row">
 
-        <div class="col-8 offset-2 mt-1">
+        <div class="col-12 col-md-8 offset-md-2 mt-1">
  
           <div class="text border p-5">
           @if( Auth::id() === $user->id )

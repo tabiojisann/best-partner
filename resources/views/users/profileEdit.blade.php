@@ -10,10 +10,6 @@
     <div class="row ">
       <div class="container blue lighten-5">
 
-       
-          
-
-
           <div class="text-center pt-5">
             @include('errors')
           </div>
@@ -21,7 +17,7 @@
             <div class="col-12 col-sm-12 col-md-8 offset-md-2 bg-light mt-5">
 
 
-              <div class="form-group col-10 col-md-7 col-lg-5 mt-5 ">
+              <div class="form-group col-10 col-md-7 col-lg-5 mt-5">
                 <labal class="text-muted">ニックネーム</label>
                 <strong class="text-danger">必須</strong>
                 <input type="name" id="name" name="name"  class="form-control" value="{{ $user->name ?? old('name')}}" required>

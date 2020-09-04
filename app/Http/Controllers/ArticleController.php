@@ -97,7 +97,7 @@ class ArticleController extends Controller
             $storePath="articles/".$now."_".$fileName;
 
             $image = Image::make($imagefile);
-            $image->resize(300,300);
+            $image->resize(978,398);
 
 
             Storage::disk('s3')->put($storePath, (string)$image->encode(), 'public');

@@ -17,7 +17,7 @@
 
       </div>
     
-      <div class="input-button text-center col">
+      <div class="input-button text-center col mt-3 ">
         <label for="file" class="btn-floating btn-lg lighten-1 mt-0 ">
           <div class="btn blue-gradient btn-sm">
             <span><i class="fas fa-cloud-upload-alt mr-2" aria-hidden="true"></i>画像を選択してください</span>

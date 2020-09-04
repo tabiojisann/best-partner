@@ -1,13 +1,12 @@
 <template>
-    <div class="md-form" id="useruser">
-        <i class="fa fa-user prefix grey-text"></i>
-        <input type="text" id="name" name="name" v-model="name" class="form-control" required 
-        @blur="textValue"/>
-        <label for="userName" class="font-weight-light" >ユーザー名</label>
-        <ul>
-          <li :class="{ 'text-danger' : error,  'd-none' : empty }">入力必須です</li>
-          <li :class="{ 'text-danger' : error2,  'd-none' : empty2 }">8文字以下で指定してください</li>
-        </ul>
+  <div class="form-group" id="useruser">
+      <label for="userName" class="font-weight-light" >ユーザー名</label>
+      <input type="text" id="name" name="name" v-model="name" class="form-control" required 
+      @blur="textValue"/>
+      <ul>
+        <li :class="{ 'text-danger' : error,  'd-none' : empty }">入力必須です</li>
+        <li :class="{ 'text-danger' : error2,  'd-none' : empty2 }">8文字以下で指定してください</li>
+      </ul>
     </div>
 </template>
 
@@ -18,7 +17,7 @@ export default {
       empty:  true,
       error:  false,
       empty2: true,
-      error2: false
+      error2: false,
     }),
 
     methods: {

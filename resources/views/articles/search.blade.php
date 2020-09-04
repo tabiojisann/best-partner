@@ -6,7 +6,7 @@
 
   <!-- body -->
   @auth
-    @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false])
+    @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false, 'hasKeeps' => false])
   @endauth
   
   <div class="row heavy-rain-gradient">

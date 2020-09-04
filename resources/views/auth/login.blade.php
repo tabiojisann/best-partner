@@ -24,20 +24,19 @@
             <div class="card-body mx-4 mt-4">
               <form method="POST" action="{{ route('login') }}">
                 @csrf
-                <div class="md-form">
-                  <input type="text" id="email" name="email" class="form-control" required value="{{ old('email') }}">
+                <div class="form-group">
                   <label for="email">メールアドレス</label>
+                  <input type="text" id="email" name="email" class="form-control" required value="{{ old('email') }}">
                 </div>
             
 
-                <div class="md-form pb-3">
-                  <input type="password" id="password" name="password" class="form-control" required>
+                <div class="form-group pb-3">
                   <label for="password">パスワード</label>
-                    <p class="font-small grey-text d-flex justify-content-end">Forgot 
-                      <a href="#" class="dark-grey-text font-weight-bold ml-1"> 
-                        Password?
-                      </a>
-                    </p>
+                  <input type="password" id="password" name="password" class="form-control" required>
+                  <a href="#" class="dark-grey-text font-weight-bold"> 
+                    <p class="text-center mt-2">パスワードをお忘れですか？？</p>
+
+                  </a>
                 </div>
 
                 <input type="hidden" name="remember" id="remember" value="on">

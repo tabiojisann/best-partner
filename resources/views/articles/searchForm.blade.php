@@ -11,7 +11,7 @@
     <span class="border mt-3"></span>
 
     <div class="p-3 mt-1">
-    <label for="style" class="text-muted">募集スタイル</label>
+      <label for="style" class="text-muted">募集スタイル</label>
       <select name="style" id="style" class="browser-default custom-select" value="" id="">
         <option value="" class="d-none">選択してください</option>
         <option value="1">漫才</option>

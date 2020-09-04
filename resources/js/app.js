@@ -42,6 +42,6 @@ const app = new Vue({
         FollowButton,
         ArticleImageUpload,
         UserImageUpload,
-        Register
+        Register,
     }
 });

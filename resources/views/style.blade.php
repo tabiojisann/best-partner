@@ -57,6 +57,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
  }
+
+ 
  /* .file-upload-wrapper {
    border-style: dashed;
    border-width: 1px;

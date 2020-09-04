@@ -21,31 +21,36 @@
             <form method="POST" class="" action="{{ route('register') }}">
               @csrf
 
-              <register :response-data="{{ json_encode($errors) }}">
-              </register>
+              <register 
+              :response-data="{{ json_encode($errors) }}"
+              :old="{{ json_encode(Session::getOldInput()) }}">
+              </register> 
 
        
-              <div class="md-form">
-                <i class="fas fa-envelope prefix grey-text"></i>
-                <input type="text" id="email" name="email" class="form-control" required value="{{ old('email') }}">
+              <div class="form-group">
+
                 <label for="email">メールアドレス</label>
+                <input type="text" id="email" name="email" class="form-control" required value="{{ old('email') }}">
+
               </div>
 
-              <div class="md-form">
-                <i class="fa fa-lock prefix grey-text"></i>
-                <input type="password" id="password" name="password" class="form-control" required>
+              <div class="form-group">
+
                 <label for="password" class="font-weight-light">パスワード</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+
               </div>
 
-              <div class="md-form">
-                <i class="fa fa-exclamation-triangle  prefix grey-text"></i>
-                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+              <div class="form-group">
+
                 <label for="password_confirmation" class="font-weight-light">パスワード(確認)</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+
               </div>
               
 
               <div class="text-center py-4 mt-3">
-                <button class="btn btn-info" type="submit">登録</button>
+                <button class="btn  btn-info" type="submit">登録</button>
               </div>
             </form>
 

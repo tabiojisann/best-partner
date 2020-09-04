@@ -154,12 +154,12 @@ class UserController extends Controller
 
         if($mime === "image/jpeg") {
             $user->save();
-            dd($user->image);
             return redirect()->route('users.show', [
                 'user' => $user,
             ]);
         } 
         else {
+            dd($user->name);
             Session::flash('abort', '正しいファイルタイプを指定ください');
             return redirect()->back();
         }
