@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use Storage;
 use App\Http\Requests\UserRequest;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -91,7 +93,7 @@ class UserController extends Controller
 
      public function profileUpdate(UserRequest $request, User $user)
      {
-
+    
         $user->fill($request->all());  
 
         $date = Carbon::parse($user->birthday);
@@ -124,11 +126,9 @@ class UserController extends Controller
      }
 
      public function imageUpdate(UserRequest $request, User $user)
-     {
-        $user->fill($request->only(['image']));
+     { 
 
-        $type = $request->getMineType();
-        dd($type);
+        $user->fill($request->only(['image', 'name']));
 
         $imagefile = $request->file('image'); 
 
@@ -146,12 +146,24 @@ class UserController extends Controller
 
             $user->image = Storage::disk('s3')->url($storePath);
         };
- 
-        $user->save();
-         
-         return view('users.show', [
-             'user' => $user,
-         ]);
+
+        $info = getimagesize($user->image);
+        $mime = $info["mime"];
+
+
+
+        if($mime === "image/jpeg") {
+            $user->save();
+            dd($user->image);
+            return redirect()->route('users.show', [
+                'user' => $user,
+            ]);
+        } 
+        else {
+            Session::flash('abort', '正しいファイルタイプを指定ください');
+            return redirect()->back();
+        }
+     
      }
 
      public function follow(Request $request, User $user)

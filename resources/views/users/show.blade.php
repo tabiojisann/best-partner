@@ -11,7 +11,13 @@
     
  
     <div class="container cloudy-knoxville-gradient" style="max-width: 100%;">
-   
+      @include('errors')
+      @if(session('abort'))
+        <div class="abort">
+          {{ session('abort') }}
+        </div>
+      @endif
+
       <div class="row">
 
         <div class="col-5 offset-1  mt-5 pb-5">

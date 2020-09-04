@@ -52,6 +52,5 @@ Route::prefix('users')->name('users.')->group(function() {
 });
 
 
-
 Route::get('/home', 'HomeController@index')->name('home');
 
