@@ -1,45 +1,98 @@
+  @guest
+    <nav class="navbar navbar-dark light-color">
+      <a class="navbar-brand" href="/">  
+        <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
+      </a>  
+    </nav>
+  @endguest
 
-  <nav class="cloudy-knoxville-gradient overlay">
 
-    <div class="row">
-      <div class="col-12">
+  @auth
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light blue-grey lighten-5 mb-4">
 
-      <div class="col-2 col-md-6">
-        <a class="navbar-brand" href="/" class="">
-          <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
-          <!-- <img src="{{ asset('logo/Best Partner-logo.png')}}" width="100" alt=""> -->
-        </a>
-      </div>
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="/">  
+        <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
+      </a>  
 
-      @guest
-        <div class="col-10 col-md-6 d-flex justify-content-end">
-          <a href="{{ route('register') }}" class="nav-link mt-2">
-            <button type="button" class="btn-sm btn-outline-info waves-effect">
-              <span class="text-success">会員登録</span>
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto">
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">記事
+            </a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+            <button class="dropdown-item" type="button"
+                      onclick="location.href='{{ route('articles.create') }}'">
+                募集をかける
             </button>
-          </a>
-          <a href="{{ route('login') }}" class="nav-link mt-2">
-            <button type="button" class="btn-sm btn-outline-info waves-effect">
-              <span class="text-success">ログイン</span>
-            </button>
-          </a>
-        </div>
-      @endguest
-
-      @auth
-        <!-- <form action="{{ route('articles.search') }}" method="GET">
-          <div class="input-group col-12 form-group form-sm form-2 pl-0 mt-3">
-          <input class="form-control my-0" type="text" name="keyword" placeholder="キーワードを入力" aria-label="Search" value="{{ $keyword ?? old('keyword') }}">
-            <div class="input-group-append">
-              <span class="input-group-text gray lighten-3" id="basic-text1"><i class="fas fa-search text-grey"
-                  aria-hidden="true"></i></span>
             </div>
-          </div>
-        </form> -->
-      @endauth
+          </li>
+
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">ユーザー
+            </a>
+            <div class="dropdown-menu dropdown-primary mr-auto" aria-labelledby="navbarDropdownMenuLink">
+
+              <button class="dropdown-item" type="button"
+                      onclick="location.href='{{ route('users.show', $user ?? '') }}'">
+                マイページ
+              </button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" type="button"
+                      onclick="location.href='{{ route('users.articles', $user ?? '') }}'">
+                募集した記事
+              </button>
+              <div class="dropdown-divider"></div>
+              <button form="logout-button" class="dropdown-item" type="submit">
+                ログアウト
+              </button>
+
+            </div>
+            <form id="logout-button" action="{{ route('logout') }}" method="POST">
+              @csrf
+            </form>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+
+        </ul>
+        <!-- Links -->
+
+        <!-- Search form -->
+        <form class="form-inline">
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
       </div>
-    </div>  
-  </nav>
+      <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+
+    
+  @endauth
+
 
 
 

@@ -14,8 +14,6 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-  @extends('style')
-
 
 </head>
 
