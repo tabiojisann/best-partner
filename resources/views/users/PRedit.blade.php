@@ -10,29 +10,13 @@
     @csrf
 
     @include('errors')
-  
-  <div class="container mb-5" style="max-width: 100%;">
-      <div class="row border-top">
-        <!-- <div class="d-flex justify-content-center">
-          <div class="col-5 mt-5 mr-5">
-            <div class="form-group shadow-textarea">
-              <textarea name="PR" id="PR" cols="70" rows="30" class="form-control z-depth-2">{{ $user->PR }}</textarea>
-            </div>
-          </div> -->
-          <div class="col-5 mt-5 ml-5">
-            <div class="form-group shadow-textarea">
-              <textarea name="PR" id="PR" cols="70" rows="30" class="form-control z-depth-2">{{ $user->PR }}</textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-center">
-        <input type="submit" class="btn btn-info px-5 mb-5" value="更新">
-      </div>
-
-  </div> 
+    <div class="container mb-5" style="max-width: 100%;">
+      <user-textarea
+      v-bind:user="{{json_encode($user->PR)}}">
+      </user-textarea>
+    </div>
   </form>   
+
         
   @include('footer')
 @endsection

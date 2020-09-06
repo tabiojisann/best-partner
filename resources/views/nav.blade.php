@@ -6,12 +6,11 @@
     </nav>
   @endguest
 
-
   @auth
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light blue-grey lighten-5 mb-4">
 
-      <!-- Navbar brand -->
+    <nav class="navbar navbar-expand-lg navbar-light blue-grey lighten-5 mb-4 sticky-top Desk">
+
+
       <a class="navbar-brand" href="/">  
         <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
       </a>  
@@ -48,7 +47,7 @@
 
               <button class="dropdown-item" type="button"
                       onclick="location.href='{{ route('users.show', $user ?? '') }}'">
-                マイページ
+              マイページ
               </button>
               <div class="dropdown-divider"></div>
               <button class="dropdown-item" type="button"
@@ -56,43 +55,64 @@
                 募集した記事
               </button>
               <div class="dropdown-divider"></div>
-              <button form="logout-button" class="dropdown-item" type="submit">
+              <button form="logout-button-mobile" class="dropdown-item text-danger" type="submit">
                 ログアウト
               </button>
 
             </div>
-            <form id="logout-button" action="{{ route('logout') }}" method="POST">
+            <form id="logout-button-mobile" action="{{ route('logout') }}" method="POST">
               @csrf
             </form>
           </li>
 
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+          <form action="{{ route('articles.search') }}" method="GET">
+            <input class="form-control mt-3 py-1" type="text" name="keyword" placeholder="キーワードで検索" aria-label="Search" value="{{ $keyword ?? old('keyword') }}">
+            <div class="">
+              <label for="style" class="text-muted">募集スタイル</label>
+              <select name="style" id="styleMobile" class="browser-default custom-select" value="" id="">
+                <option value="" class="d-none">選択してください</option>
+                <option value="1">漫才</option>
+                <option value="2">コント</option>
+                <option value="3">その他</option>
+              </select>
             </div>
-          </li>
+
+            <div class="">
+              <label for="position" class="text-muted">募集ポジション</label>
+              <select name="position" id="positionMobile" class="browser-default custom-select p-2" value="" id="">
+                <option value="" class="d-none">選択してください</option>
+                <option value="1" >ボケ</option>
+                <option value="2">ツッコミ</option>
+                <option value="3">その他</option>
+              </select>
+            </div>
+
+            <div class="d-flex justify-content-center p-2">
+              <button type="submit" class="btn winter-neva-gradient pink-text">検索</button>
+            </div>
+          </form>
 
         </ul>
         <!-- Links -->
-
-        <!-- Search form -->
-        <form class="form-inline">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </form>
+     
       </div>
       <!-- Collapsible content -->
 
     </nav>
     <!--/.Navbar-->
 
-    
+    <nav class="navbar navbar-dark light-color Mobile">
+      <a class="navbar-brand" href="/">  
+        <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
+      </a>  
+      <ul class="navbar-nav ml-auto">
+        <button type="submit" form="logout-button-desk" class="btn btn-outline-danger waves-effect">ログアウト</button>
+      </ul>
+      <form action="{{ route('logout') }}" method="POST" id="logout-button-desk">
+        @csrf
+      </form>
+    </nav>
+
   @endauth
-
-
-
 

@@ -24,6 +24,8 @@ Route::prefix('articles')->name('articles.')->group(function() {
 
 Route::get('/confirm', 'ArticleController@confirm')->name('articles.confirm')->middleware('auth');
 Route::post('/confirm', 'ArticleController@send')->name('articles.send')->middleware('auth');
+Route::get('/confirEdit', 'ArticleController@confirmEdit')->name('articles.confirmEdit')->middleware('auth');
+Route::patch('/confirmEdit', 'ArticleController@sendPatch')->name('articles.sendPatch')->middleware('auth');
 
 Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
 Route::get('/users', 'UserController@search')->name('users.search')->middleware('auth');

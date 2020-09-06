@@ -103,12 +103,14 @@ class UserController extends Controller
 
         $user->save();
 
+        Session::flash('profile_success', 'プロフィールを変更しました');
+
          return view('users.show', ['user' => $user, 'age' => $age]);
      }
 
      public function PRedit(User $user)
      {
-        
+
         return view('users.PRedit', [
             'user' => $user,
         ]);
@@ -119,6 +121,8 @@ class UserController extends Controller
         
         $user->fill($request->only(['PR']));
         $user->save();
+
+        Session::flash('PR_success', 'PR欄を変更しました');
          
          return view('users.show', [
              'user' => $user,
@@ -136,7 +140,7 @@ class UserController extends Controller
             $now = date_format(Carbon::now(), 'YmdHis');
             $fileName = ($imagefile)->getClientOriginalName();
 
-            $storePath="articles/".$now."_".$fileName;
+            $storePath="users/".$now."_".$fileName;
 
             $image = Image::make($imagefile);
             $image->resize(500,500);
@@ -154,6 +158,7 @@ class UserController extends Controller
 
         if($mime === "image/jpeg") {
             $user->save();
+            Session::flash('image_success', 'アイコンを変更しました');
             return redirect()->route('users.show', [
                 'user' => $user,
             ]);

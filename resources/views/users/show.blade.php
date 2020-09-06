@@ -4,19 +4,15 @@
 
 @section('content')
   @include('nav')
+
+  @include('flash')
   
   @if( Auth::id() === $user->id )
     @include('users.tabs',['hasShow' => true, 'hasMyArticles' => false])
   @endif
-    
- 
+
     <div class="container cloudy-knoxville-gradient" style="max-width: 100%;">
       @include('errors')
-      @if(session('abort'))
-        <div class="abort">
-          {{ session('abort') }}
-        </div>
-      @endif
 
       <div class="row">
 

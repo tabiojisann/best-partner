@@ -1,4 +1,4 @@
-<div class="card mt-5 article_card">
+<div class="card mt-5 mx-2 article_card">
 
   <div class="m-1 d-flex justify-content-between ">
     <div class="d-inline">
@@ -68,49 +68,51 @@
     </a>
   </div>
 
-  <div class="card-body ">             
+  <span class="border"></span>
 
-    <h3 class="card-title">{{ $article->title }}</h3>
+  <div class="card-body">
+    <div class="row">            
+    <div class="col-12">
+      <h3 class="card-title">{{ $article->title }}</h3>
 
-    <table class="table table-bordered">
-      <tbody>
+      <table class="table table-bordered col col-lg-8">
+        <tbody class="">
 
-        <tr>
-          <th style="width:20%" class="blue-grey lighten-5 text-left">
-            <i class="fas fa-map-marker-alt text-info" class=""></i>
-              募集ポジション
-          </th>
-          <th style="width:50%" class="text-left">{{ $article->position }}</th>
-        </tr>
+          <tr>
+            <th class="blue-grey lighten-5 text-left ">
+              <i class="fas fa-map-marker-alt text-info"></i>
+                ポジション
+            </th>
+            <th style="width:50%" class="text-left">{{ $article->position }}</th>
+          </tr>
 
-        <tr>
-          <th style="width:20%" class="blue-grey lighten-5 text-left">
-            <i class="fas fa-briefcase text-default"></i>
-              募集スタイル
-          </th>
-          <th style="width:50%" class="text-left">{{ $article->style }}</th>
-        </tr>
+          <tr>
+            <th class="blue-grey lighten-5 text-left">
+              <i class="fas fa-briefcase text-default"></i>
+                スタイル
+            </th>
+            <th style="width:50%" class="text-left">{{ $article->style }}</th>
+          </tr>
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
 
-    <p class="text-muted indexText">{{ $article->text }}</p>
+      <p class="text-muted indexText">{{ $article->text }}</p>
 
+      <article-keep
+      :initial-is-keep='@json($article->isKeep(Auth::user()))'
+      :initial-count-keeps='@json($article->count_keeps)'
+      :authorized='@json(Auth::check())'
+      endpoint="{{ route('articles.keep', ['article' => $article]) }}"
+      >
+      </article-keep>
 
+      <a href="{{ route('articles.show', ['article' => $article]) }}" class="btn btn-mdb-color px-4">
+        <i class="fas fa-align-justify text-info">   </i>  詳細
+      </a>
 
-    <article-keep
-     :initial-is-keep='@json($article->isKeep(Auth::user()))'
-     :initial-count-keeps='@json($article->count_keeps)'
-     :authorized='@json(Auth::check())'
-     endpoint="{{ route('articles.keep', ['article' => $article]) }}"
-     >
-    </article-keep>
-    
-    <a href="{{ route('articles.show', ['article' => $article]) }}" class="btn btn-mdb-color px-5">
-      <i class="fas fa-align-justify text-info">   </i>  詳細
-    </a>
-
-    <p class="float-right mt-4 text-muted">{{ $article->created_at->format('Y年 n月 j日 / H:i') }}</p>
-
+      <p class="float-right mt-4 text-muted">{{ $article->created_at->format('Y年 n月 j日 / H:i') }}</p>
+    </div>
+    </div> 
   </div>
 </div>

@@ -17,26 +17,26 @@
             <div class="border"></div>
 
             <div class="view overlay mt-3">
-              <img class="card-img-top" src="{{ $article->image ?: asset('logo/NoImage.jpg') }}" width="978" height="398" alt="photo">
+              <img class="card-img-top" src="{{ $article->image ?: asset('logo/NoImage.jpg') }}" alt="photo">
             </div>
 
-            <h1 class="text mt-5 border-bottom text-center">{!! nl2br(e($article->title)) !!}</h1>
+            <h1 class="text mt-5 border-bottom">{!! nl2br(e($article->title)) !!}</h1>
            
-            <table class="table table-bordered col-6 offset-3 mt-5">
+            <table class="table table-bordered col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-5">
               <tbody>
 
                 <tr>
-                  <th style="width:20%" class="blue-grey lighten-5 text-left">
+                  <th style="" class="blue-grey lighten-5 text-left">
                     <i class="fas fa-map-marker-alt text-info" class=""></i>
-                      募集ポジション
+                      ポジション
                   </th>
                   <th style="width:50%" class="text-left">{{ $article->position }}</th>
                 </tr>
 
                 <tr>
-                  <th style="width:20%" class="blue-grey lighten-5 text-left">
+                  <th style="" class="blue-grey lighten-5 text-left">
                     <i class="fas fa-briefcase text-default"></i>
-                      募集スタイル
+                      スタイル
                   </th>
                   <th style="width:50%" class="text-left">{{ $article->style }}</th>
                 </tr>
@@ -46,7 +46,7 @@
 
             <div class="container">
               <div class="row mt-5 border-top">
-                <div class="col-8 offset-2 mt-2">
+                <div class="col col-md-8 offset-md-2 mt-2">
                   <p  class="mt-4">{!! nl2br(e($article->text))!!}</p>
                 </div>
               </div>

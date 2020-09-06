@@ -11,24 +11,24 @@
   
   <div class="row heavy-rain-gradient">
 
-    <div class="card border-light col-3 offset-1 my-5 search">
+    <div class="card border-light col-md-4 col-lg-3 offset-md-1 my-5 Mobile search">
       @include('articles.searchForm') 
     </div>
 
     <!-- 検索結果 -->
  
-      <div class="col-6 offset-1 pb-5">
-        @if(!empty($keyword || $style || $position))
-          @if($articles->count())
-            @foreach($articles as $article)
-              @include('articles.card')
-            @endforeach
-          @else
-            <p class="mt-5">条件に合致する募集要綱が見つかりませんでした</p>
-          @endif
+    <div class="col px-5">
+      @if(!empty($keyword || $style || $position))
+        @if($articles->count())
+          @foreach($articles as $article)
+            @include('articles.card')
+          @endforeach
         @else
-          <p class="mt-5">条件を最低1項目入力してください</p>
+          <p class="text-center animated fadeInRight">条件に合致する募集要綱が見つかりませんでした</p>
         @endif
+      @else
+        <p class="text-center animated fadeInRight">条件を最低1項目入力してください</p>
+      @endif
     </div>
   </div>  
 

@@ -1,13 +1,13 @@
 <template>
     <div class="d-inline">
-      <button class="btn btn-success px-5" type="button" 
+      <button class="btn btn-success px-2" type="button" 
               :class="{'grey lighten-2':this.isKeep}"
               @click="clickButton">
         <i class="mr-1"
           :class="keepIcon">
         </i>気になる
       </button>
-      {{ countKeeps }}
+      <!-- {{ countKeeps }} -->
     </div>
    
 </template>

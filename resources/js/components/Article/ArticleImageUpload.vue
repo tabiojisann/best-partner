@@ -7,15 +7,6 @@
       <span class="text-danger h5"  v-if="this.data.image" @click="resetFile()">削除</span>
     </div>
 
-    <div class="preview text-center"  v-if="this.article.image">
-      <img :src="this.article.image" ref="image"  height="300" width="300" alt="" @change="dropFile">
-      <span class="text-danger h5"  v-if="this.article.image" @click="dropFile()">削除</span>
-    </div> 
-
-    <p class="text-center" @click="check">
-      チェック
-    </p>
-
     <div class="input-button text-center">
       <label for="file" class="btn-floating btn-lg lighten-1 mt-0 ">
         <div class="btn blue-gradient btn-sm">
@@ -24,7 +15,7 @@
       </label>
     </div>
 
-    <input  type="file" id="file" ref="file" name="image"  value="" class="" @change="setImage"/>
+    <input  type="file" id="file" ref="file" name="image"  value="" class="d-none" @change="setImage"/>
 
   </div>
 

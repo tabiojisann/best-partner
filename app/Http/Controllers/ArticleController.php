@@ -110,6 +110,7 @@ class ArticleController extends Controller
         $article->user_id = $request->user()->id; 
 
         $request->session()->put('articles.create', $article);
+     
 
         return redirect()->action('ArticleController@confirm');
 
@@ -127,7 +128,6 @@ class ArticleController extends Controller
 
     public function send(Request $request, Article $article)
     {
-       
         $article = $request->session()->get("articles.create");
 
         if(!$article){
@@ -138,11 +138,10 @@ class ArticleController extends Controller
 
         $request->session()->forget("article.create");
 
-        Session::flash('flash_message', 'The post was just trashed.');
+        Session::flash('flash_message', '投稿が完了しました');
 
         return redirect()->route('articles.index', ['article' => $article]);
     }
-
 
     public function edit(Article $article)
     {  
@@ -170,16 +169,43 @@ class ArticleController extends Controller
             $article->image = Storage::disk('s3')->url($storePath);
         };
 
-     
-        $request->session()->put('articles.create', $article);
+        $request->session()->put('articles.edit', $article);
 
-        return redirect()->action('ArticleController@confirm');
+        return redirect()->action('ArticleController@confirmEdit');
 
     }
 
+    public function confirmEdit(Request $request, Article $article)
+    {
+
+        $article = $request->session()->get("articles.edit");
+
+		if(!$article){
+			return redirect()->action("ArticleController@edit");
+		}  
+		return view("articles.confirmEdit",['article' => $article]);
+    }
+
+    public function sendPatch(Request $request, Article $article)
+    {
+        $article = $request->session()->get("articles.edit");
+
+        if(!$article){
+            return redirect()->action("ArticleController@edit");
+        }
+        
+        $article->save();
+
+        $request->session()->forget("article.edit");
+
+        Session::flash('edit_success', '編集が完了しました');
+
+        return redirect()->route('articles.index', ['article' => $article]);
+    }
+
+
     public function destroy(Article $article)
     {
-        
         $article->delete();
 
         return redirect()->route('articles.index');
@@ -187,9 +213,6 @@ class ArticleController extends Controller
 
     public function imageDestroy(Article $article)
     {
-        
-
-    
         
         $disk = Storage::disk('s3');
         $disk->delete($article->image);

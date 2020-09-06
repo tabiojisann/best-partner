@@ -33,6 +33,7 @@ import ArticleKeep from './components/Article/ArticleKeep'
 import FollowButton from './components/User/FollowButton'
 import ArticleImageUpload from './components/Article/ArticleImageUpload'
 import UserImageUpload from './components/User/UserImageUpload'
+import UserTextarea from './components/User/UserTextarea'
 import Register from './components/User/Register'
 
 const app = new Vue({
@@ -42,6 +43,7 @@ const app = new Vue({
         FollowButton,
         ArticleImageUpload,
         UserImageUpload,
+        UserTextarea,
         Register,
     }
 });

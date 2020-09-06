@@ -42,7 +42,7 @@ class UserRequest extends FormRequest
             'youtube'    => ['url', 'regex:~https://www.youtube.com~', 'nullable'],
             'twitter'    => ['url', 'regex:~https://twitter.com~', 'nullable'],
             'blog'       => ['url', 'nullable'],
-            'PR'         => ['string', 'max:20', 'nullable']
+            'PR'         => ['string', 'max:2000', 'nullable']
         ];
     }
 

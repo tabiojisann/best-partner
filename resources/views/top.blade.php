@@ -26,18 +26,22 @@
   </div>
 @endguest
 
-@if (session('flash_message'))
-  <div class="flash_message">
-      {{ session('flash_message') }}
-  </div>
-@endif
+@include('flash')
 
 @auth
-  <div class="container border border-success my-4">
-    <a href="{{ route('users.show', ['user' => $user]) }}" class="text-muted d-flex justify-content-center">
-      <img src="{{ $user->image ?: asset('logo/user.jpg') }}" class="d-inline rounded-circle" height="50" width="45" alt="">
-      <h3 class="d-inline ml-3 mt-2">ようこそ<span class="text-danger">{{ $user->name }}</span>さん！</h3>
-    </a>
+  <div class="deep-blue-gradient py-5">
+    <div class="container border my-4">
+      <a href="{{ route('users.show', ['user' => $user]) }}" class="text-muted d-flex justify-content-center">
+        <img src="{{ $user->image ?: asset('logo/user.jpg') }}" class="d-inline rounded-circle" height="50" width="45" alt="">
+        <h3 class="d-inline ml-3 mt-2">ようこそ<span class="text-white">{{ $user->name }}</span>さん！</h3>
+      </a>
+
+      <nav class="nav nav-pills nav-fill mt-5">
+        <a class="nav-item nav-link text-white bg ripe-malinka-gradient" href="{{ route('users.show', ['user' => $user]) }}">マイページ</a>
+        <a class="nav-item nav-link text-white bg dusty-grass-gradient" href="{{ route('users.articles', ['user' => $user]) }}">投稿済み</a>
+        <a class="nav-item nav-link text-white bg sunny-morning-gradient" href="{{ route('articles.create') }}">募集をかける</a>
+      </nav>
+    </div>
   </div>
 @endauth
 

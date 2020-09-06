@@ -2,8 +2,15 @@
   <div class="image-uploader">
     <div class="row">
       
+      <div class="d-flex justify-content-center col-12">
+        <div class="preview text-center" v-if="!this.user.image">
+          <img :src="this.data.image" alt="" class="img mt-1">
+          <span class="text-danger h5" v-if="this.data.image" @click="resetFile()">リセット</span>
+        </div>
+      </div>
+      
     
-      <div class="d-flex justify-content-around col-12">
+      <div class="d-flex justify-content-around col-12" v-if="this.user.image">
         <div class="preview text-center" v-if="this.user.image">
           <img :src="this.user.image" alt="" class="img mt-1">
         </div>

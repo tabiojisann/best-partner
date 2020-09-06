@@ -130,7 +130,7 @@
               </div>
               
               <div class="d-flex justify-content-center my-3">
-                <input type="submit" class="btn btn-indigo mt-5 px-5" value="更新">
+                <input type="submit" class="btn btn-light-green mt-5 px-5" value="更新">
               </div>
           
             </div> 
