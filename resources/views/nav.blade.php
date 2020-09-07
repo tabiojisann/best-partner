@@ -1,18 +1,17 @@
   @guest
     <nav class="navbar navbar-dark light-color">
       <a class="navbar-brand" href="/">  
-        <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
+        <img src="{{ asset('logo/lookforp.png') }}" width="150" border="0" class="horizontal">
       </a>  
     </nav>
   @endguest
 
   @auth
 
-    <nav class="navbar navbar-expand-lg navbar-light blue-grey lighten-5 mb-4 sticky-top Desk">
-
+    <nav class="navbar navbar-expand-lg navbar-light mb-4 sticky-top Desk">
 
       <a class="navbar-brand" href="/">  
-        <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
+        <img src="{{ asset('logo/lookforp.png') }}" width="120" border="0" class="horizontal">
       </a>  
 
       <!-- Collapse button -->
@@ -104,7 +103,7 @@
 
     <nav class="navbar navbar-dark light-color Mobile">
       <a class="navbar-brand" href="/">  
-        <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
+      <img src="{{ asset('logo/lookforp.png') }}" width="150" border="0" class="horizontal">
       </a>  
       <ul class="navbar-nav ml-auto">
         <button type="submit" form="logout-button-desk" class="btn btn-outline-danger waves-effect">ログアウト</button>

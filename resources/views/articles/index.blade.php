@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Best Partner')
+@section('title', 'Lookforp')
 
 @section('content')
   @include('nav')
@@ -13,7 +13,7 @@
     @include('articles.tabs', ['hasArticles' => true, 'hasUsers' => false, 'hasKeeps' => false])
   @endauth
 
-  <div class="row heavy-rain-gradient">
+  <div class="row light-blue lighten-5">
 
     @guest
     <!-- 記事一覧 -->

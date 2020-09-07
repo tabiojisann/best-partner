@@ -5,7 +5,8 @@
 
 @section('content')
   <a class="navbar-brand" href="/">
-    <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal">
+    <!-- <img src="https://s3.amazonaws.com/lg-vectors/bitmaps/206127/721602.png?logo_version=0" width="100" border="0" class="horizontal"> -->
+    <img src="{{ asset('logo/lookforp.png') }}" width="150" border="0" class="horizontal">
   </a>
   <div class="container pb-5" style="margin-top: 50px;">
     <div class="row">
@@ -36,7 +37,7 @@
 
               <div class="form-group">
 
-                <label for="password" class="font-weight-light">パスワード</label>
+                <label for="password" class="font-weight-light">パスワード(8文字以上の英数字)</label>
                 <input type="password" id="password" name="password" class="form-control" required>
 
               </div>
@@ -63,5 +64,5 @@
       </div>
     </div>
   </div>
-  @include('footer')
+
 @endsection

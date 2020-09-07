@@ -1,13 +1,13 @@
 <template>
   <div class="form-group" id="useruser">
-      <label for="userName" class="font-weight-light" >ユーザー名</label>
+      <label for="userName" class="font-weight-light" >ユーザー名(12文字以内)</label>
       <input type="text" id="name" name="name" v-model="name" class="form-control" required 
       @blur="textValue"/>
       <ul>
         <li :class="{ 'text-danger' : error,  'd-none' : empty }">入力必須です</li>
-        <li :class="{ 'text-danger' : error2,  'd-none' : empty2 }">8文字以下で指定してください</li>
+        <li :class="{ 'text-danger' : error2,  'd-none' : empty2 }">12文字以下で指定してください</li>
       </ul>
-    </div>
+  </div>
 </template>
 
 <script>

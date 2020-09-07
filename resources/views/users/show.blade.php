@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', $user->name)
+@section('title', $user->name . 'のプロフィール')
 
 @section('content')
   @include('nav')
