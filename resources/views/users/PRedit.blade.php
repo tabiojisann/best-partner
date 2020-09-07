@@ -10,13 +10,12 @@
     @csrf
 
     @include('errors')
-    <div class="container mb-5" style="max-width: 100%;">
+    <div class="container my-1" style="max-width: 100%;">
       <user-textarea
-      v-bind:user="{{json_encode($user->PR)}}">
+      v-bind:user="{{json_encode($user->PR)}}"
+      v-bind:mark-body="{{json_encode($user->mark_body)}}">
       </user-textarea>
     </div>
   </form>   
-
-        
-  @include('footer')
+ 
 @endsection

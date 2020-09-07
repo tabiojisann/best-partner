@@ -197,7 +197,7 @@
           @if( Auth::id() === $user->id )
       <a href="{{ route('users.PRedit', ['user' => $user]) }}" class="float-right h3 ml-3"><i class="fas fa-user-edit text-primary"></i></i></a>
           @endif
-            {!! nl2br(e($user->PR)) !!}
+            {!! nl2br(($user->mark_body)) !!}
           </div>
         </div>
       </div>

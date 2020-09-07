@@ -23,6 +23,9 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "popper.js": "^1.16.1"
+        "babel-runtime": "^6.26.0",
+        "marked": "^1.1.1",
+        "popper.js": "^1.16.1",
+        "vue-markdown": "^2.2.4"
     }
 }

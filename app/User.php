@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use cebe\markdown\Markdown as Markdown;
 
 class User extends Authenticatable
 {
@@ -86,6 +87,17 @@ class User extends Authenticatable
 
     public function getPrefNameAttribute() {
         return config('prefecture.'.$this->birthplace);
+    }
+
+    public function parse()
+    {
+        $parser = new Markdown();
+        
+        return $parser->parse($this->PR);
+    }
+
+    public function getMarkBodyAttribute() {
+        return $this->parse();
     }
 
 }
