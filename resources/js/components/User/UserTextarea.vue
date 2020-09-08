@@ -19,7 +19,7 @@
 
     </div>
 
-    <div class="d-flex justify-content-center border-top fixed-bottom  bg-light">
+    <div class="d-flex justify-content-center border-top fixed-bottom  blue lighten-3">
       <input type="submit" class="btn btn-light-green px-5" value="更新">
     </div>
 

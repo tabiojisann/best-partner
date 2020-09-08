@@ -187,7 +187,7 @@
 
  
  
-    <div class="container mb-5 mt-3 " style="max-width: 100%;">
+    <div class="container mb-5 mt-3" style="max-width: 100%;">
  
       <div class="row">
 
