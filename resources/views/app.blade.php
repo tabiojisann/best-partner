@@ -29,8 +29,6 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.11/js/mdb.min.js"></script>
 
 
-
-
   
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
  
@@ -44,37 +42,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
+
   <script type="text/javascript"></script>
-
-<style>
-  .overlay{
-    display:none;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.6);
-   
-    z-index:1;
-}
-.btn_area{
-    width:300px;
-    height:150px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin-top:-75px;
-    margin-left:-150px;
-    background-color:#fff;
-    z-index:2;
-}
-.btn_area p{
-    padding:15px;
-}
-.btn_area button{
-    display:block;
-    margin:0 auto;
-}
-</style>
-
 
 </body>
 

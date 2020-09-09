@@ -2,11 +2,18 @@
     <nav class="navbar navbar-dark light-color">
       <a class="navbar-brand" href="/">  
         <img src="{{ asset('logo/lookforp.png') }}" width="150" border="0" class="horizontal">
-      </a>  
+      </a>
+      <div>
+        <a href="{{ route('login') }}" class="btn btn-outline-danger waves-effect p-1 ">
+          <span class="text-primary">ログイン</span></a>
+        <a href="{{ route('register') }}" class="btn blue text-white p-2 ">会員登録</a>
+      </div>  
     </nav>
   @endguest
 
   @auth
+
+  <!-- モバイル -->
 
     <nav class="navbar navbar-expand-lg navbar-light mb-4 sticky-top Desk">
 
@@ -100,6 +107,9 @@
 
     </nav>
     <!--/.Navbar-->
+
+
+    <!-- デスクトップ -->
 
     <nav class="navbar navbar-dark light-color Mobile">
       <a class="navbar-brand" href="/">  

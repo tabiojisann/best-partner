@@ -3,16 +3,6 @@
     <div class="row">
       <div class="col-8 offset-2 bg-light">
         <div class="col-10 col-md-6 d-flex justify-content-end">
-          <a href="{{ route('register') }}" class="nav-link mt-2">
-            <button type="button" class="btn-sm btn-outline-info waves-effect">
-              <span class="text-success">会員登録</span>
-            </button>
-          </a>
-          <a href="{{ route('login') }}" class="nav-link mt-2">
-            <button type="button" class="btn-sm btn-outline-info waves-effect">
-              <span class="text-success">ログイン</span>
-            </button>
-          </a>
         </div>
       </div>
     </div>
@@ -31,10 +21,6 @@
 @auth
   <div class=" morpheus-den-gradient py-5">
     <div class="container border my-4">
-      <a href="{{ route('users.show', ['user' => $user]) }}" class="text-muted d-flex justify-content-center">
-        <img src="{{ $user->image ?: asset('logo/user.jpg') }}" class="d-inline rounded-circle" height="50" width="45" alt="">
-        <h3 class="d-inline ml-3 mt-2">ようこそ<span class="blue-text">{{ $user->name }}</span>さん！</h3>
-      </a>
 
       <nav class="nav nav-pills nav-fill mt-5">
         <a class="nav-item nav-link text-white bg young-passion-gradient" href="{{ route('users.show', ['user' => $user]) }}">マイページ</a>

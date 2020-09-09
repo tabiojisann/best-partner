@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="email">メールアドレス</label>
       <input type="text" id="email" name="email" class="form-control" placeholder="@を含む有効なメールアドレス" required
-      v-model="email" @keyup="check">
+      v-model="email" @blur="check">
       <small :class="{'text-danger' : errorRequire, 'd-none' : hideRequire }">入力必須です</small>
       <small :class="{'text-danger' : errorValid, 'd-none' : hideValid }">有効なメールアドレスを入力してください</small>
       <!-- <small></small> -->

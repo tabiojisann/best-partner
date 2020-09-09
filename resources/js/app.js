@@ -27,7 +27,6 @@ window.Vue = require('vue');
  */
 
 import './bootstrap'
-import './main'
 import './cookie'
 import Vue from 'vue'
 import VueMarkdown from './components/User/VueMarkdown'

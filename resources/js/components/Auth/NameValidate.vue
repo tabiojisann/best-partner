@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="userName" class="font-weight-light" >ユーザー名</label>
       <input type="text" id="name" name="name" v-model="name" class="form-control" placeholder="12文字以内" required
-      @keyup="check" />
+      @blur="check" />
       <small :class="{ 'text-danger' : errorRequire,  'd-none' : hideRequire }">入力必須です</small>
       <small :class="{ 'text-danger' : errorMax,  'd-none' : hideMax }">12文字以下で指定してください</small>
     </div>

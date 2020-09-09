@@ -5,7 +5,7 @@
   <div class="form-group">
     <label for="password" class="font-weight-light">パスワード</label>
     <input type="password" id="password" name="password" class="form-control" placeholder="半角英数字を8文字以上" required
-    v-model="password" @keyup="check">
+    v-model="password" @blur="check">
     <small :class="{ 'text-danger' : errorMax, 'd-none' : hideMax }" >8文字以上入力必須です</small>
     <small :class="{ 'text-danger' : errorValid, 'd-none' : hideValid }" >半角英数字が有効です</small>
   </div>

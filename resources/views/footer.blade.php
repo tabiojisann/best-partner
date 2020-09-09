@@ -7,7 +7,7 @@
     <!-- Grid row -->
     <div class="row">
 
-       <div class="col-md-3 mx-auto pt-3" >
+       <div class="col-md-3 pt-3" >
          <a class="" href="/">  
           <img src="{{ asset('logo/lookforp.png') }}" width="200" border="0" class=" horizontal">
          </a>
@@ -70,6 +70,7 @@
             <form action="{{ route('logout') }}" method="post" id="logout">
               @csrf
             </form>
+
           @endif
         </ul>
 
@@ -84,7 +85,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">Copyright:
-    <a href="https://mdbootstrap.com/"> © 2020 lookforp inc.</a>
+    <a href="http://www.lookforp.com/"> © 2020 lookforp inc.</a>
   </div>
   <!-- Copyright -->
 

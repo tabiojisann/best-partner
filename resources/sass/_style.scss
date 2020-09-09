@@ -60,3 +60,64 @@ text-overflow: ellipsis;
 }
 
 
+
+// モーダルメッセージ
+
+.messageCard {
+  position: relative;
+
+}
+
+.messageModal{
+  display: none;
+  width:90%;
+  height: 90%;
+  margin-left: 40px;
+  position: fixed;
+  background: rgba(0,0,0,0);
+  position: absolute;
+  top: 20px;
+  z-index: 1;
+}
+
+.bord {
+  height: 80%;
+  width: 90%;
+  background:#fff;
+  position:absolute;
+  top:15%;
+  left:5%;
+  z-index: 2;
+}
+
+.close_area {
+  z-index: 2;
+  position: absolute;
+  top: 1%;
+  right: 1%;
+
+}
+
+.close_area button {
+  background: red;
+  box-shadow: 0px 0px 20px 1px black;
+  border-radius: 5px;
+  padding: 2px 5px;
+  color: #ddd;
+  cursor: pointer;
+  text-align: center; 
+  display: block;
+}
+
+#profile_area {
+  height: 50px;
+  width: 300px;
+  margin: 0 auto;
+
+}
+
+
+
+
+
+

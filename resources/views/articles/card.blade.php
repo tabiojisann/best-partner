@@ -3,7 +3,7 @@
   <div class="m-1 d-flex justify-content-between ">
     <div class="d-inline">
       <a href="{{ route('users.show', $article->user_id) }}">
-        <img src="{{ $article->user->image ?: asset('logo/user.jpg') }}"  height="50" width="45" class="rounded-circle"  alt="">
+      <img src="{{ $article->user->image ?: asset('logo/user.jpg') }}"  height="50" width="45" class="rounded-circle"  alt="">
         @if(Auth::id() === $article->user_id)
           <p class="text-danger d-inline">{{ $article->user->name }}</p>
         @else
@@ -59,14 +59,16 @@
 
   <span class="border"></span>
     
-  <div class="view overlay">
+  <div class="">
     @if(isset($article->image))
-      <img class="card-img-top" src="{{ $article->image }}" alt="Card image cap">
+      <img class="card-img-top" src="{{ $article->image }}" width="978" height="378" alt="Card image cap">
     @endif
     <a href="{{ route('articles.show', ['article' => $article]) }}">
       <div class="mask rgba-white-slight"></div>
     </a>
   </div>
+
+
 
   <span class="border"></span>
 

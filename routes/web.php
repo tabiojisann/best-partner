@@ -30,7 +30,7 @@ Route::patch('/confirmEdit', 'ArticleController@sendPatch')->name('articles.send
 Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
 Route::get('/users', 'UserController@search')->name('users.search')->middleware('auth');
 
-Route::resource('/users', 'UserController')->only(['show', 'edit', 'update']);
+Route::resource('/users', 'UserController')->only(['show', 'edit', 'update', 'destroy']);
 
 
 Route::prefix('articles')->name('articles.')->group(function () {

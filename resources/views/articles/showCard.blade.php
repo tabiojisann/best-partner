@@ -16,8 +16,8 @@
 
             <div class="border"></div>
 
-            <div class="view overlay mt-3">
-              <img class="card-img-top" src="{{ $article->image ?: asset('logo/NoImage.jpg') }}" alt="photo">
+            <div class="mt-3">
+              <img class="card-img-top" src="{{ $article->image ?: asset('logo/NoImage.jpg') }}"  alt="photo">
             </div>
 
             <h1 class="text mt-5 border-bottom">{!! nl2br(e($article->title)) !!}</h1>
