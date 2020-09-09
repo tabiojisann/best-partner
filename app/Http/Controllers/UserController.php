@@ -84,6 +84,16 @@ class UserController extends Controller
         ]);
     }
 
+    public function edit(User $user)
+    {
+
+        return view('users.edit', [
+            'user' => $user,
+        ]);
+    }
+
+
+
      public function profileEdit(User $user)
      {
         return view('users.profileEdit', [

@@ -23,7 +23,7 @@
     <div class="container border my-4">
 
       <nav class="nav nav-pills nav-fill mt-5">
-        <a class="nav-item nav-link text-white bg young-passion-gradient" href="{{ route('users.show', ['user' => $user]) }}">マイページ</a>
+        <a class="nav-item nav-link text-white bg young-passion-gradient" href="{{ route('users.edit', ['user' => $user]) }}">マイページ</a>
         <a class="nav-item nav-link text-white bg young-passion-gradient" href="{{ route('users.articles', ['user' => $user]) }}">投稿済み</a>
         <a class="nav-item nav-link text-white bg young-passion-gradient" href="{{ route('articles.create') }}">募集をかける</a>
       </nav>

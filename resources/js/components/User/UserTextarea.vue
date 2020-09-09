@@ -1,34 +1,27 @@
 <template>
 
   <div>
+    <mavon-editor v-model="PR" name="PR" language="ja"  @change="changeText"/>
 
-    <div class= "row border-top" >
-
-      <div class="col-6 col-md-6 my-5">
-        <div class="form-group shadow-textarea">
-          <textarea name="PR" v-model="PR" tabindex="30" cols="70" rows="30" placeholder="本文" class="form-control z-depth-2 editor"></textarea>
-        </div>
+      <div class=" my-5">
+      <div class="form-group shadow-textarea">
+        <textarea name="PR" v-model="PR" tabindex="30" cols="70" rows="30" placeholder="本文" class="form-control z-depth-2 editor"></textarea>
       </div>
-
-<!--     
-      <div class="col-6 col-md-6 mt-5">
-        <div class="form-group shadow-textarea">
-          <textarea  name="" id="" cols="70" rows="30" placeholder="プレビュー" class="form-control z-depth-2 bg-white editor" disabled></textarea>
-        </div>
-      </div>  -->
-
     </div>
 
-    <div class="d-flex justify-content-center border-top fixed-bottom  blue lighten-3">
-      <input type="submit" class="btn btn-light-green px-5" value="更新">
+    <div class="d-flex justify-content-center border-top fixed-bottom  blue lighten-5">
+      <input type="submit" class="btn btn-success px-5" value="更新">
     </div>
-
-
   </div>
 
 </template>
 
 <script>
+import Vue from "vue";
+import mavonEditor from "mavon-editor"
+import "mavon-editor/dist/css/index.css"
+Vue.use(mavonEditor);
+
 export default {
   props: {
     user: {
@@ -44,15 +37,29 @@ export default {
     return {
       PR: this.user,
       parseText: this.markBody,
-      html: ''
- 
+      html: '',
+      value: '',
+      mdText: '',
+      htmlText: '',
+      toolbars: {
+        bold: true,
+        italic: true,
+        header: true,
+      }
       
     }
   },
 
+  // methods: {
+  //   parsePR: function(html) {
+  //     this.html = html
+  //   }
+  // }
+
   methods: {
-    parsePR: function(html) {
-      this.html = html
+    changeText(value, reder) {
+      this.mdText = value;
+      this.htmlText = reder;
     }
   }
 

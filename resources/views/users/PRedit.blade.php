@@ -10,7 +10,7 @@
     @csrf
 
     @include('errors')
-    <div class="container blue-gradient my-1" style="max-width: 100%;">
+    <div class="container blue lighten-4 my-1" style="max-width: 100%;">
       <user-textarea
       v-bind:user="{{json_encode($user->PR)}}"
       v-bind:mark-body="{{json_encode($user->mark_body)}}">

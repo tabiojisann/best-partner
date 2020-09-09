@@ -29,7 +29,6 @@ window.Vue = require('vue');
 import './bootstrap'
 import './cookie'
 import Vue from 'vue'
-import VueMarkdown from './components/User/VueMarkdown'
 import ArticleKeep from './components/Article/ArticleKeep'
 import FollowButton from './components/User/FollowButton'
 import ArticleImageUpload from './components/Article/ArticleImageUpload'
@@ -52,6 +51,5 @@ const app = new Vue({
         NameValidate,
         EmailValidate,
         PasswordValidate,
-        VueMarkdown,
     }
 });

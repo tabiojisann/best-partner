@@ -2,14 +2,17 @@
 
   <div class="m-1 d-flex justify-content-between ">
     <div class="d-inline">
-      <a href="{{ route('users.show', $article->user_id) }}">
-      <img src="{{ $article->user->image ?: asset('logo/user.jpg') }}"  height="50" width="45" class="rounded-circle"  alt="">
         @if(Auth::id() === $article->user_id)
+        <a href="{{ route('users.edit', $article->user_id) }}">
+          <img src="{{ $article->user->image ?: asset('logo/user.jpg') }}"  height="50" width="45" class="rounded-circle"  alt="">
           <p class="text-danger d-inline">{{ $article->user->name }}</p>
+        </a> 
         @else
+        <a href="{{ route('users.show', $article->user_id) }}">
+          <img src="{{ $article->user->image ?: asset('logo/user.jpg') }}"  height="50" width="45" class="rounded-circle"  alt="">
           <p class="text-info d-inline">{{ $article->user->name }}</p>
+        </a> 
         @endif 
-      </a> 
     </div>
 
     @if(Auth::id() === $article->user_id)
