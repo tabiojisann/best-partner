@@ -1,4 +1,4 @@
-<!-- <div class="messageCard"> -->
+<div class="messageModal">
 
     <div class="messageModal animated fadeInRight mt-5">
       <div class="bord">
@@ -22,7 +22,7 @@
       </div>
     </div>
 
-<!-- </div> -->
+</div>
 
 
 

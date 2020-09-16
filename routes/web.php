@@ -17,19 +17,6 @@ Route::get('/', 'ArticleController@index')->name('articles.index');
 
 Route::resource('/articles', 'ArticleController')->except(['index', 'show'])->middleware('auth');
 Route::resource('/articles', 'ArticleController')->only(['show']);
-
-Route::prefix('articles')->name('articles.')->group(function() {
- 
-});
-
-Route::get('/confirm', 'ArticleController@confirm')->name('articles.confirm')->middleware('auth');
-Route::post('/confirm', 'ArticleController@send')->name('articles.send')->middleware('auth');
-Route::get('/confirEdit', 'ArticleController@confirmEdit')->name('articles.confirmEdit')->middleware('auth');
-Route::patch('/confirmEdit', 'ArticleController@sendPatch')->name('articles.sendPatch')->middleware('auth');
-
-Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
-Route::get('/users', 'UserController@search')->name('users.search')->middleware('auth');
-
 Route::resource('/users', 'UserController')->only(['show', 'edit', 'update', 'destroy']);
 
 
@@ -52,6 +39,15 @@ Route::prefix('users')->name('users.')->group(function() {
     Route::patch('/{user}/imageUpdate', 'UserController@imageUpdate')->name('imageUpdate');
   });
 });
+
+Route::get('/confirm', 'ArticleController@confirm')->name('articles.confirm')->middleware('auth');
+Route::post('/confirm', 'ArticleController@send')->name('articles.send')->middleware('auth');
+Route::get('/confirEdit', 'ArticleController@confirmEdit')->name('articles.confirmEdit')->middleware('auth');
+Route::patch('/confirmEdit', 'ArticleController@sendPatch')->name('articles.sendPatch')->middleware('auth');
+
+Route::get('/articles', 'ArticleController@search')->name('articles.search')->middleware('auth');
+Route::get('/users', 'UserController@search')->name('users.search')->middleware('auth');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');
